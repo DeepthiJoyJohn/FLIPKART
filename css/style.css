@@ -1,0 +1,61 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+body{
+    margin:0;
+    bgcolor:"FIF3F6";
+}
+.logo{
+    width:80px;
+    position: relative;
+    top:2px;
+
+}
+.logo img{
+    width:100px;
+}
+header{
+    background-color:#2874F0;
+    height:55px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.explore{
+    width: 80px;
+    display: flex;
+    white-space: nowrap;
+    display:flex;
+    align-content: flex-start;
+    position: relative;
+    top:-2px;
+    
+
+}
+.explore p{
+    margin: 0;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 550;
+    color: white;
+    
+}
+.explore a{
+    display: flex;
+}
+.explore img{
+    width: 8px;
+    height: 10px;
+    margin: 0;
+   
+}
+.plus-icon{
+    color: #ffe500;
+    
+}
+a{
+    text-decoration: none;
+}

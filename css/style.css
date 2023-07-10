@@ -11,10 +11,9 @@ body{
     width:80px;
     position: relative;
     top:2px;
-
 }
 .logo img{
-    width:100px;
+    width:80px;
 }
 header{
     background-color:#2874F0;
@@ -22,7 +21,6 @@ header{
     display:flex;
     justify-content: center;
     align-items: center;
-
 }
 .explore{
     width: 80px;
@@ -32,30 +30,119 @@ header{
     align-content: flex-start;
     position: relative;
     top:-2px;
-    
-
 }
 .explore p{
     margin: 0;
     font-size: 12px;
     font-style: italic;
     font-weight: 550;
-    color: white;
-    
+    color: white;   
 }
 .explore a{
-    display: flex;
+    display: flex ;
+    color:white;
+}
+.explore a:hover{
+    text-decoration: underline;
 }
 .explore img{
     width: 8px;
     height: 10px;
-    margin: 0;
-   
+    margin: 0;   
 }
 .plus-icon{
     color: #ffe500;
-    
 }
 a{
     text-decoration: none;
 }
+
+.search_container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:500px;
+    min-width 300px;
+    background-color: white;
+    width:450px; 
+    height:35px;
+    margin:0px 10px;
+    border-radius: 2px;
+    padding:0px 10px;
+    box-shadow: -5px -5px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+.search_container i{
+    color:#2874f0;
+}
+.search_container input{
+    width: 100%;
+    font-size: 14px;
+    border:none;
+    outline: none;
+}
+.search_container:focus-within .recent_search{
+    display: block;
+}
+.recent_search{
+    position:absolute;
+    background-color: white;
+    box-shadow: -5px -0px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
+    height: 400px;
+    width:100%;
+    top:35px;
+    margin-left: -10px;
+    border-top:1px solid #ccc;
+    display:none;
+}
+.loginBtn_container{
+    background-color: white;
+    padding: 7px 30px;
+    font-size: 18px;  
+    border-radius: 2px;
+    margin: 0px 10px;
+}
+.loginBtn_container a{
+    columns: #2874f0;
+    font-weight: 550;
+    text-decoration: none;
+    
+}
+.nav-link{
+    padding : 0px 15px;
+    font-size: 18px;
+    color:white;
+    text-decoration: none;
+    font-weight:550;
+    
+}
+.more_link{
+    padding : 0px 15px;
+    font-size: 18px;
+    color:white;    
+    font-weight:550;   
+    cursor: pointer; 
+    margin:0px 10px;
+}
+.cart_link{
+    padding : 0px 15px;
+    font-size: 18px;
+    color:white;    
+    font-weight:550;   
+    cursor: pointer; 
+    display: flex;
+    margin:0px 1px;
+ 
+}
+.cart_link p{
+    padding: 0px 5px;
+    
+}
+.icon_more{
+    font-size: 2px;
+    transition: transform 0.5s;
+}
+.more_link:hover .icon_more{
+    transform:rotate(180deg);
+}
+

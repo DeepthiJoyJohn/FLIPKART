@@ -3,6 +3,10 @@
     margin:0;
     box-sizing:border-box;
 }
+form{
+
+    width: 100%;
+}
 body{
     margin:0;
     bgcolor:"FIF3F6";
@@ -64,11 +68,11 @@ a{
     max-width:500px;
     min-width 300px;
     background-color: white;
-    width:450px; 
+    width:440px; 
     height:35px;
     margin:0px 10px;
     border-radius: 2px;
-    padding:0px 10px;
+    padding:0px 15px;
     box-shadow: -5px -5px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
     position: relative;
 }
@@ -91,9 +95,23 @@ a{
     height: 400px;
     width:100%;
     top:35px;
-    margin-left: -10px;
+    margin-left: -15px;
     border-top:1px solid #ccc;
     display:none;
+    padding:15px;
+    z-index: 2;
+}
+.recent_list{
+    display: flex;
+    padding 10px 0px;
+}
+.recent_list p{
+    padding-left: 20px;
+    font-size: 15px;
+}
+.recent_list i{
+    color: #7a7a7a;
+    font-size:14px;
 }
 .loginBtn_container{
     background-color: white;
@@ -114,6 +132,7 @@ a{
     color:white;
     text-decoration: none;
     font-weight:550;
+    margin:0 5px;
     
 }
 .more_link{

@@ -20,9 +20,12 @@
                 </div>
             </div>
             <div class="search_container">
-                <input type="text" Placeholder="Search for Products brands and more">
+                <form id="search_form">
+                    <input type="text" Placeholder="Search for Products brands and more" id="search_input">
+                </form>
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <div class="recent_search">
+                    
                 </div>
             </div>
             <div class="loginBtn_container">
@@ -38,6 +41,7 @@
                 <p> Cart</p>
             </div>         
         </header>
+        <script src="js/javascript.js"></script>
         
     </body>
 </html>

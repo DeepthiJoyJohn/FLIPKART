@@ -103,7 +103,7 @@ a{
 }
 .recent_list{
     display: flex;
-    padding 10px 0px;
+    padding 7px 0px;
 }
 .recent_list p{
     padding-left: 20px;
@@ -119,6 +119,7 @@ a{
     font-size: 18px;  
     border-radius: 2px;
     margin: 0px 10px;
+    position:relative;
 }
 .loginBtn_container a{
     columns: #2874f0;
@@ -126,6 +127,55 @@ a{
     text-decoration: none;
     
 }
+.login_menu{
+    position: absolute;
+    top:34px;
+    height:350px; 
+    width:230px;
+    background-color: transparent;
+    margin-left: -30px;
+    transform: translate(-30%);
+    padding-top: 15px;
+    display: none;
+}
+.login_menu::before{
+    position: absolute;
+    content:"";    
+    margin-left: 130px;
+    top:1px;
+    border-top:0px solid transparent;
+    border-left: 5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom: 10px solid white;
+}
+.loginBtn_container:hover .login_menu{
+    display: block;
+}
+.login_menu_list{
+    max-width: 100%;
+    background-color: white;
+    height:100%;
+    box-shadow: -5px -0px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
+    padding: 5px 20px;
+    font-size: 15px;
+}
+.login_menu_top{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.login_menu_top a:hover{
+    text-decoration: underline;
+}
+.menu_nav_link a{
+    font-size: 14px;
+    display:flex;
+    padding-top: 10px;
+}
+.menu_nav_link p{    
+    padding-left: 10px;
+}
+
 .nav-link{
     padding : 0px 15px;
     font-size: 18px;
@@ -164,4 +214,5 @@ a{
 .more_link:hover .icon_more{
     transform:rotate(180deg);
 }
+
 

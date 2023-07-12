@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
+        
     </head>
     <body>
         <header>
@@ -30,6 +31,20 @@
             </div>
             <div class="loginBtn_container">
                 <a href="#">Login</a>
+                <div class="login_menu">
+                    <div class="login_menu_list">
+                        <div class="login_menu_top">
+                            <p>New Customer?</p>
+                            <a href="#">Sign Up</a>
+                        </div>
+                        <div class="menu_nav_link">
+                            <a href="#">
+                                <i class="fa fa-user-circle-o"></i>
+                                <p>My Profile</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a class="nav-link" href="#">Become a Seller</a>   
             <div class="more_link">

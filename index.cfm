@@ -42,6 +42,26 @@
                                 <i class="fa fa-user-circle-o"></i>
                                 <p>My Profile</p>
                             </a>
+                            <a href="#">
+                                <i class="fa fa-search"></i>
+                                <p>Flipkart Plus Zone</p>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"></i>
+                                <p>My Orders</p>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"></i>
+                                <p>Wishlist</p>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"></i>
+                                <p>Rewards</p>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"></i>
+                                <p>Gift Cards</p>
+                            </a>
                         </div>
                     </div>
                 </div>

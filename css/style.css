@@ -122,7 +122,7 @@ a{
     position:relative;
 }
 .loginBtn_container a{
-    columns: #2874f0;
+    columns: #FIF3F6;
     font-weight: 550;
     text-decoration: none;
     
@@ -157,7 +157,7 @@ a{
     height:100%;
     box-shadow: -5px -0px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
     padding: 5px 20px;
-    font-size: 15px;
+    font-size: 15px;    
 }
 .login_menu_top{
     display:flex;
@@ -167,13 +167,21 @@ a{
 .login_menu_top a:hover{
     text-decoration: underline;
 }
+.menu_nav_link{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:8 0%;
+}
+
 .menu_nav_link a{
     font-size: 14px;
     display:flex;
     padding-top: 10px;
 }
-.menu_nav_link p{    
+.menu_nav_link a p{    
     padding-left: 10px;
+    color:rgb(24, 23, 23);
 }
 
 .nav-link{

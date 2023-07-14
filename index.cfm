@@ -38,28 +38,28 @@
                             <a href="#">Sign Up</a>
                         </div>
                         <div class="menu_nav_link">
-                            <a href="#">
+                            <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
                                 <i class="fa fa-user-circle-o"></i>
                                 <p>My Profile</p>
                             </a>
                             <a href="#">
-                                <i class="fa fa-search"></i>
+                                <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                                 <p>Flipkart Plus Zone</p>
                             </a>
                             <a href="#">
-                                <i class="fa fa-search"></i>
+                                <img src="Icon/order.svg" class="menu_nav_icon"/>
                                 <p>My Orders</p>
                             </a>
                             <a href="#">
-                                <i class="fa fa-search"></i>
+                                <img src="Icon/wishlist.svg" class="menu_nav_icon"/>
                                 <p>Wishlist</p>
                             </a>
                             <a href="#">
-                                <i class="fa fa-search"></i>
+                                <img src="Icon/reward.svg" class="menu_nav_icon"/>
                                 <p>Rewards</p>
                             </a>
                             <a href="#">
-                                <i class="fa fa-search"></i>
+                                <img src="Icon/giftcard.svg" class="menu_nav_icon"/>
                                 <p>Gift Cards</p>
                             </a>
                         </div>
@@ -70,6 +70,28 @@
             <div class="more_link">
                 More
                 <i class="fa solid fa-angle-down icon_more" aria-hidden="true"></i>
+                <div class="more_menu">
+                    <div class="more_menu_list">
+                        <div class="menu_nav_link">
+                            <a href="#">
+                               <img src="Icon/notification.svg" class="menu_nav_icon"/>
+                                <p>Notification Preferences</p>
+                            </a>
+                            <a href="#">
+                                <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
+                                <p>24 x 7 Customer Care</p>
+                            </a>
+                            <a href="#">
+                                <img src="Icon/order.svg" class="menu_nav_icon"/>
+                                <p>Advertise</p>
+                            </a>
+                            <a href="#">
+                                <img src="Icon/wishlist.svg" class="menu_nav_icon"/>
+                                <p>Download App</p>
+                            </a>                            
+                        </div>
+                    </div>
+                </div>
             </div>   
             <div class="cart_link">
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>

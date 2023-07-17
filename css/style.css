@@ -21,7 +21,7 @@ body{
 }
 header{
     background-color:#2874F0;
-    height:55px;
+    height:52px;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -69,9 +69,9 @@ a{
     min-width 300px;
     background-color: white;
     width:440px; 
-    height:35px;
+    height:32px;
     margin:0px 10px;
-    border-radius: 2px;
+    border-radius: 1px;
     padding:0px 15px;
     box-shadow: -5px -5px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
     position: relative;
@@ -115,9 +115,9 @@ a{
 }
 .loginBtn_container{
     background-color: white;
-    padding: 7px 30px;
-    font-size: 18px;  
-    border-radius: 2px;
+    padding: 7px 35px;
+    font-size: 15px;  
+    border-radius: 1px;
     margin: 0px 10px;
     position:relative;
 }
@@ -251,14 +251,13 @@ a{
     border-right:5px solid transparent;
     border-bottom: 10px solid white;
 }
-.cart_link{
-    padding : 0px 15px;
-    font-size: 18px;
+.cart_link{    
+    font-size: 15px;
     color:white;    
     font-weight:550;   
     cursor: pointer; 
     display: flex;
-    margin:0px 1px;
+    margin-left :10px;
  
 }
 .cart_link p{

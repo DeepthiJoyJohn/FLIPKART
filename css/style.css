@@ -271,5 +271,25 @@ a{
 .more_link:hover .icon_more{
     transform:rotate(180deg);
 }
+.featureProducts{
+    height: 103px;
+    background-color: white;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+}
+.featureProducts_item{
+    width:60px;
 
+}
+.featureProducts_item img{
+    width:100%;
+    
+}
+.featureProducts_name{
+    font-size:14px;
+    font-weight: 550;
+    color:#474545;
+}
+.featureProduct_icon_more{
+    font-size:10px;
+}
 

@@ -1,3 +1,4 @@
+import {featureProductNew} from "js/featureProductNew.js"
 let input_search=document.getElementById("search_input")
 let form_search=document.getElementById("search_form")
 let recent_searchEl=document.querySelector(".recent_search")

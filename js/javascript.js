@@ -1,4 +1,4 @@
-import {featureProductNew} from "js/featureProductNew.js"
+import {featureProductNav} from "./Data/featureProductNav.js"
 let input_search=document.getElementById("search_input")
 let form_search=document.getElementById("search_form")
 let recent_searchEl=document.querySelector(".recent_search")
@@ -23,3 +23,24 @@ function renderrecent(){
 	recent_searchEl.innerHTML=recent_search_html;
 }
 renderrecent()
+
+/*****featured Product */
+let featuredProduct_listEI=document.querySelector(".featureProducts_list")
+let featuredProductHTML=''
+featureProductNav.forEach(el=>{
+	featuredProductHTML +=`
+		<div class="featureProducts_item">
+			<a href="${el.link}">
+				<div class="featureProducts_image">
+					<img src="${el.img}"/>
+				</div>
+				<p class="featureProducts_name">
+					${el.name}
+					<i class="fa-solid fa-angle-down featureProduct_icon_more"></i>
+				</p>
+			</a>
+		</div>`
+})
+
+featuredProduct_listEI.innerHTML=featuredProductHTML;
+//console.log(featuredProductHTML)

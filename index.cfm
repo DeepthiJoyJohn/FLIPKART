@@ -101,19 +101,11 @@
         <main>
             <div class="featureProducts">
                 <div class="featureProducts_list">
-                    <div class="featureProducts_item">
-                        <div class="featureProducts_image">
-                            <img src="Images/items/grocery.png"/>
-                        </div>
-                        <p class="featureProducts_name">
-                            Grocery
-                            <i class="fa-solid fa-angle-down featureProduct_icon_more"></i>
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
         </main>
         <script src="js/javascript.js" type="module"></script>
         
-    </body>
+    </body> 
 </html>

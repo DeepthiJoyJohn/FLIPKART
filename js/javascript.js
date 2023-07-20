@@ -1,4 +1,5 @@
-import {featureProductNav} from "./Data/featureProductNav.js"
+import {featureProductNav} from "../Data/featureProductNav.js"
+import {imageSlider} from "../Data/ImageSlider.js"
 let input_search=document.getElementById("search_input")
 let form_search=document.getElementById("search_form")
 let recent_searchEl=document.querySelector(".recent_search")
@@ -36,11 +37,21 @@ featureProductNav.forEach(el=>{
 				</div>
 				<p class="featureProducts_name">
 					${el.name}
-					<i class="fa-solid fa-angle-down featureProduct_icon_more"></i>
+					${el.subNavigation ?`<i class="fa solid fa-angle-down featureProduct_icon_more"></i>`:""}
 				</p>
 			</a>
 		</div>`
 })
 
 featuredProduct_listEI.innerHTML=featuredProductHTML;
-//console.log(featuredProductHTML)
+/****Image Slider */
+let imageSliderListEl=document.querySelector(".imageSliderList")
+let imageSliderListHTML=''
+imageSlider.forEach(el=>{
+	imageSliderListHTML+=`<div class="imageSliderItem">
+							<a href="${el.link}">
+								<img src="${el.img}"/>
+							</a>
+						  </div>`
+})
+imageSliderListEl.innerHTML=imageSliderListHTML;

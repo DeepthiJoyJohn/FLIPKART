@@ -1,12 +1,12 @@
-export constant featureProductNav=[
-	{
+export const featureProductNav = [
+	{	
 		id:"featureProductNav_1",
 		img:"Images/items/grocery.png",
 		name:"Grocery",
 		link:"https://www.flipkart.com/grocery-supermart-store?marketplace=GROCERY&fm=neo%2Fmerchandising&iid=M_79d96edb-43d5-4448-8dfe-e8befa801a8a_1_FBB4FBSRQIC6_MC.4BYE6NISISOE&otracker=hp_rich_navigation_10_1.navigationCard.RICH_NAVIGATION_Grocery_4BYE6NISISOE&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_10_L0_view-all&cid=4BYE6NISISOE",
 		subNavigation:false,
 	},
-	{
+	{	
 		id:"featureProductNav_2",
 		img:"Images/items/beauty.png",
 		name:"Beauty",
@@ -69,5 +69,4 @@ export constant featureProductNav=[
 		link:"https://www.flipkart.com/travel/flights?param=FKHPNavTravelBDSJul23&fm=neo%2Fmerchandising&iid=M_5bf6bea5-469e-4918-8381-d3b815fa3058_1_FBB4FBSRQIC6_MC.9ODHZCZ094O6&otracker=hp_rich_navigation_9_1.navigationCard.RICH_NAVIGATION_Flights_9ODHZCZ094O6&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_9_L0_view-all&cid=9ODHZCZ094O6",
 		subNavigation:true,
 	}
-
 ]

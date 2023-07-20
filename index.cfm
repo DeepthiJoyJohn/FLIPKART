@@ -100,9 +100,22 @@
         </header>
         <main>
             <div class="featureProducts">
-                <div class="featureProducts_list">
-                    
+                <div class="featureProducts_list">                    
                 </div>
+            </div>
+            <!--Image Slider-->
+            <div class="imageSliderContainer">
+                <div class="imageSliderBtn">
+                    <button>
+                        <i class="fa solid fa-angle-left"></i>
+                    </button>  
+                    <button>
+                        <i class="fa solid fa-angle-right"></i>
+                    </button>  
+                </div>
+                <div class="imageSliderList">
+                    
+                </div>                
             </div>
         </main>
         <script src="js/javascript.js" type="module"></script>

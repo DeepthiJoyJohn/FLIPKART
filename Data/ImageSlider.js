@@ -1,6 +1,6 @@
 export const imageSlider=[
 	{
-		img:"Images/slide/img1.png",
+		img:"https://rukminim2.flixcart.com/fk-p-flap/50/50/image/01a30a7e632dfa61.jpg?q=50",
 		link:"#",
 	},
 	{

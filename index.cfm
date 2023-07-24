@@ -106,10 +106,10 @@
             <!--Image Slider-->
             <div class="imageSliderContainer">
                 <div class="imageSliderBtn">
-                    <button>
+                    <button id="preve_imageBtn">
                         <i class="fa solid fa-angle-left"></i>
                     </button>  
-                    <button>
+                    <button id="next_imageBtn">
                         <i class="fa solid fa-angle-right"></i>
                     </button>  
                 </div>

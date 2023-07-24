@@ -1,14 +1,15 @@
 export const imageSlider=[
 	{
-		img:"https://rukminim2.flixcart.com/fk-p-flap/50/50/image/01a30a7e632dfa61.jpg?q=50",
+		img:"Images/slide/img1.jpg",
 		link:"#",
 	},
 	{
-		img:"Images/slide/img2.png",
+		img:"Images/slide/img2.jpg",
 		link:"#",
 	},
 	{
-		img:"https://rukminim2.flixcart.com/fk-p-flap/50/50/image/a1d93b6bc446790d.jpg?q=50",
+		img:"Images/slide/img3.jpg",
 		link:"#",
 	},
+	
 ]

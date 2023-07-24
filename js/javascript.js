@@ -52,6 +52,25 @@ imageSlider.forEach(el=>{
 							<a href="${el.link}">
 								<img src="${el.img}"/>
 							</a>
-						  </div>`
+						  </div>` 
 })
 imageSliderListEl.innerHTML=imageSliderListHTML;
+let preve_imageBtnEl=document.getElementById("preve_imageBtn")
+let next_imageBtnEl=document.getElementById("next_imageBtn")
+let start=0;
+let end=-200;
+preve_imageBtnEl.addEventListener("click",handlePreveImage)
+next_imageBtnEl.addEventListener("click",handleNextImage)
+function handlePreveImage(){
+	alert("FD")
+
+}
+function handleNextImage(){
+	let imageAllList=document.querySelectorAll(".imageSliderItem")
+	start-=100
+	imageAllList.forEach(el=>{
+		el.style.transform=`translateX(${start}%)`
+	})
+	
+
+}

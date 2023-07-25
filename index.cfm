@@ -113,9 +113,33 @@
                         <i class="fa solid fa-angle-right"></i>
                     </button>  
                 </div>
-                <div class="imageSliderList">
-                    
+                <div class="imageSliderList">                    
                 </div>                
+            </div>
+            <!--Best Of Electronics-->
+            <div class="bestofElectronic_Container">
+                <div class="bestofElectronic_list">
+                    <div class="bestofElectronic_items">
+                        <div class="bestofElectronic_bigText">
+                            Best Of Electronics
+                        </div>
+                        <a href="#" class="viewallBtn">View All</a>
+                        <div class="bestofElectronicmoreOption">
+                            <img src="https://rukminim1.flixcart.com/fk-p-flap/278/278/image/7593e7b6640822c1.jpg?q=90">
+                        </div>                        
+                    </div>
+                    <div class="bestofElectronic_items">
+                        <div class="bestofElectronic_image_Product">
+                            <img src="https://rukminim2.flixcart.com/flap/200/200/image/20c224cd52ae7a87.jpg?q=70"/>
+                        </div>
+                        <div class="bestofElectronicmoreOption">
+                            <p class="bestofElectronicProduct_name">Best of Trimmers</p>
+                            <p class="bestofElectronicProduct_discount">From ₹399</p>
+                            <p class="bestofElectronicProduct_brand">realme,Mi,Philips & more</p>
+                        </div>                        
+                    </div>
+                </div>
+
             </div>
         </main>
         <script src="js/javascript.js" type="module"></script>

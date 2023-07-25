@@ -61,16 +61,28 @@ let start=0;
 let end=-200;
 preve_imageBtnEl.addEventListener("click",handlePreveImage)
 next_imageBtnEl.addEventListener("click",handleNextImage)
-function handlePreveImage(){
-	alert("FD")
 
+function handlePreveImage(){
+	let imageAllList=document.querySelectorAll(".imageSliderItem")
+	if(start<0)
+	start+=100
+	imageAllList.forEach(el=>{
+		el.style.transform=`translateX(${start}%)`
+	})
 }
 function handleNextImage(){
 	let imageAllList=document.querySelectorAll(".imageSliderItem")
+	if(start>end)
 	start-=100
 	imageAllList.forEach(el=>{
 		el.style.transform=`translateX(${start}%)`
 	})
-	
-
 }
+function renderImageSlider(){
+	if(start>end){
+		handleNextImage()
+	}else{
+		start=100
+	}
+}
+setInterval(renderImageSlider,5000)

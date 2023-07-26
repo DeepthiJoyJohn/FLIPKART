@@ -370,22 +370,26 @@ a{
     width: 210px;
     position:relative;
     bottom:0;
+    text-align: center;
      
 }
 .bestofElectronicmoreOption img{
     height:100%;
     width:100%;
     
+    
 }
 .bestofElectronic_items{
     background-color: white;
     min-width: 210px;
+    max-width: 210px;
     height:310px;
     position: relative;
     display:flex;
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+    
 }
 .viewallBtn{
     background-color: #2874f0;
@@ -398,31 +402,47 @@ a{
     font-size: 30px;
     text-align: center;
     margin: 60px 0px 30px 0px;
+    
 }
 .bestofElectronic_list{
     display: flex;
+    
 }
 .bestofElectronic_image_Product{
-   height:max-content;
+   height:210;
    text-align: center;
-   height:210px;   
+   height:210px; 
+   display: flex;
+   align-items: center;  
+   justify-content: center;
+   padding: 10px;
+   
 }
 .bestofElectronic_image_Product img {
-    width:80%;
+    width:90%;
+    max-height: 210px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .bestofElectronicProduct_name{
     font-size: 15px;
     padding: 5px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.5px;  
+    
 }
 .bestofElectronicProduct_discount{
     color: #388e3c;
 
 }
 .bestofElectronicProduct_brand{
-    color:#ccc;
+    color:#898686;
+    font:12px;
+    padding-top: 7px;
 
+}
+.bestofElectronic_product_item{
+    display:flex;
+    overflow: hidden;
 }

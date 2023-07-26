@@ -1,5 +1,7 @@
 import {featureProductNav} from "../Data/featureProductNav.js"
 import {imageSlider} from "../Data/ImageSlider.js"
+import {electronicsProductData} from "../Data/electronicProduct.js"
+
 let input_search=document.getElementById("search_input")
 let form_search=document.getElementById("search_form")
 let recent_searchEl=document.querySelector(".recent_search")
@@ -86,3 +88,21 @@ function renderImageSlider(){
 	}
 }
 setInterval(renderImageSlider,5000)
+
+let bestofElectronic_product_itemEl=document.querySelector(".bestofElectronic_product_item")
+let bestofElectronic_product_html=""
+electronicsProductData.forEach(el=>{
+	bestofElectronic_product_html+=`		
+			<div class="bestofElectronic_items">
+				<div class="bestofElectronic_image_Product">
+					<img src="${el.img}"/>
+				</div>
+				<div class="bestofElectronicmoreOption">
+					<p class="bestofElectronicProduct_name">${el.name}</p>
+					<p class="bestofElectronicProduct_discount">${el.discount}</p>
+					<p class="bestofElectronicProduct_brand">${el.brand}</p>
+				</div>                        
+			</div>		
+	    `
+})
+bestofElectronic_product_itemEl.innerHTML=bestofElectronic_product_html 

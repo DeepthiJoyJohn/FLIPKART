@@ -136,6 +136,5 @@
             </div>
         </main>
         <script src="js/javascript.js" type="module"></script>
-        
     </body> 
 </html>

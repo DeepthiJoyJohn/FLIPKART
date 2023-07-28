@@ -125,6 +125,7 @@ a{
     border-radius: 1px;
     margin: 0px 10px;
     position:relative;
+    z-index: 20;
 }
 .loginBtn_container a{
     columns: #FIF3F6;
@@ -209,6 +210,7 @@ a{
     cursor: pointer; 
     margin:0px 10px;
     position:relative;
+    z-index: 20;
 }
 .more_menu{
     position:absolute;

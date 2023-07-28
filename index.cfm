@@ -4,8 +4,7 @@
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        
+        <script src="js/loginjs.js"></script>        
     </head>
     <body>
         <header>
@@ -30,7 +29,7 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                <a href="#">Login</a>
+                <a href="#" id="loginBtn">Login</a>
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top">

@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Flipkart-style Popup Login</title>
-  <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-  <button id="loginBtn">Login</button>
-  <div id="loginPopup">
-    <div class="loginContent">
-      <span class="closeBtn" onclick="closePopup()">&times;</span>
-      <!-- Login form goes here -->
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
-      </form>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h1 class="heading">Login</h1>
+        <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
+      </div>
+      <div class="right">
+        add some input
+      </div>
     </div>
-  </div>
-  <script src="js/loginjs.js"></script>
-</body>
+  </body>
 </html>

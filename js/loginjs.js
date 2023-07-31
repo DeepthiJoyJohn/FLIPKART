@@ -1,10 +1,16 @@
 const loginBtn = document.getElementById('loginBtn');
-const loginPopup = document.getElementById('loginPopup');
 
-loginBtn.addEventListener('click', () => {
-  loginPopup.style.display = 'block';
-});
+loginBtn.addEventListener('click', openPopup);
+function openPopup(event) {
+  event.preventDefault();
+  // The URL of the popup window (e.g., "popup.html")
+  const popupURL = "loginpopup.cfm";
 
-function closePopup() {
-  loginPopup.style.display = 'none';
+  // Optional settings for the popup window
+  const popupSettings = "width=400,height=300,resizable=yes";
+
+  // Open the popup window
+  window.open(popupURL, "PopupWindow", popupSettings);
 }
+
+

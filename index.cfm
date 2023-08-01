@@ -3,10 +3,31 @@
         <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/styles.css">
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                
     </head>
     <body>
+        <!--div for login-->
+        <div id="loginPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closeLoginPopup()">&times;</span>
+                <div class="left">
+                    <h1 class="heading">Login</h1>
+                    <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
+                    <img class="loginimg" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"/>
+                </div>
+                <div class="right">
+                    <div class="input-group">
+                    <label class="label">Enter Email/Mobile Number</label><br><br>
+                    <input id="userid" type="text" Placeholder="enter"/>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End-->
         <header>
             <div class="logoContainer">
                 <div class="logo">
@@ -29,7 +50,7 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                <a href="#" id="loginBtn">Login</a>
+                <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top">
@@ -97,7 +118,7 @@
                 <p> Cart</p>
             </div>         
         </header>
-        <main>
+        <main>            
             <div class="featureProducts">
                 <div class="featureProducts_list">                    
                 </div>
@@ -131,10 +152,11 @@
                         
                     </div>
                 </div>
-
             </div>
+            
         </main>
         <script src="js/javascript.js" type="module"></script>
-        <script src="js/loginjs.js"></script> 
+        
+        <script src="js/scripts.js"></script>  
     </body> 
 </html>

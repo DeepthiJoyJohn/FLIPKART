@@ -13,7 +13,10 @@
         <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
       </div>
       <div class="right">
-        add some input
+        <div class="input-group">
+          <input type="text" Placeholder="enter"/>
+          <label></label> 
+        </div>
       </div>
     </div>
   </body>

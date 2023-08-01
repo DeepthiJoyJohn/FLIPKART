@@ -316,6 +316,7 @@ a{
 }
 .imageSliderList{
     position: absolute;
+    
     z-index: 8;    
     width:99%; 
     height: 95%;   

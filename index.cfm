@@ -4,7 +4,6 @@
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styles.css">
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                
     </head>
@@ -12,7 +11,6 @@
         <!--div for login-->
         <div id="loginPopup" class="popup">
             <div class="popup-content">
-                <span class="close" onclick="closeLoginPopup()">&times;</span>
                 <div class="left">
                     <h1 class="heading">Login</h1>
                     <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
@@ -20,11 +18,26 @@
                 </div>
                 <div class="right">
                     <div class="input-group">
-                    <label class="label">Enter Email/Mobile Number</label><br><br>
-                    <input id="userid" type="text" Placeholder="enter"/>
-                    
+                        <label class="label">Enter Email/Mobile Number</label>
+                        <input class="input" id="userid" type="text"/> <br><br>
+                        <label class="label">Enter Password</label>
+                        <input class="password" id="s" type="password"/> <br>
+                       
+                        <div class="terms">
+                            By continuing, you agree to Flipkart's 
+                            <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/terms">Terms of Use</a>
+                            and <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy</a>.
+                        </div>     
+                        <button class="loginbtn">Login</button>    
+                        <div class="newsignup">
+                            <a class="_14Me7y" href="/account/login?signup=true">
+                                New to Flipkart? Create an account
+                            </a>
+                        </div>          
                     </div>
                 </div>
+                <span class="close" onclick="closeLoginPopup()">&times;</span><br>
+                
             </div>
         </div>
         <!--End-->

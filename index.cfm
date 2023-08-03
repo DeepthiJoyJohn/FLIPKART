@@ -12,8 +12,14 @@
         <div id="loginPopup" class="popup">
             <div class="popup-content">
                 <div class="left">
-                    <h1 class="heading">Login</h1>
-                    <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
+                    <div class="leftlogin" id="leftlogin">
+                        <h1 class="heading">Login</h1>
+                        <p class="heading_desc">Get access to your Orders, Wishlist and Recommendations</p>
+                    </div>
+                    <div class="signupview" id="signupview1">
+                        <h1 class="heading">Looks like you're new here!</h1>
+                        <p class="heading_desc">Sign up with your mobile number to get started</p>
+                    </div>
                     <img class="loginimg" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"/>
                 </div>
                 <div class="right">
@@ -21,26 +27,32 @@
                         <label class="label">Enter Email/Mobile Number</label>
                         <input class="input" id="userid" type="text"/> <br><br>
                         <label class="label">Enter Password</label>
-                        <input class="password" id="s" type="password"/> <br>
-                       
+                        <input class="input" id="s" type="Password"/> <br>                       
                         <div class="terms">
                             By continuing, you agree to Flipkart's 
                             <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/terms">Terms of Use</a>
                             and <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy</a>.
                         </div>     
-                        <button class="loginbtn">Login</button>    
-                        <div class="newsignup">
-                            <a class="_14Me7y" href="/account/login?signup=true">
+                        <button class="loginbtn" id="loginbtn">Login</button> 
+                        <div class="signupview" id="signupview">
+                            <button id="signupbtn" class="loginbtn">Continue</button> 
+                            <a class="exeusrlink" href="javascript:hideSignupPopup()">
+                                <span class="exelink">Existing User? Log in</span>
+                            </a>  
+                        </div>
+                        <div class="newsignup" id="newsignup">
+                            <a href="javascript:showSignupPopup()">
                                 New to Flipkart? Create an account
                             </a>
                         </div>          
                     </div>
                 </div>
-                <span class="close" onclick="closeLoginPopup()">&times;</span><br>
-                
+                <span class="close" onclick="closeLoginPopup()">&times;</span><br>                
             </div>
         </div>
         <!--End-->
+
+        
         <header>
             <div class="logoContainer">
                 <div class="logo">
@@ -169,7 +181,6 @@
             
         </main>
         <script src="js/javascript.js" type="module"></script>
-        
         <script src="js/scripts.js"></script>  
     </body> 
 </html>

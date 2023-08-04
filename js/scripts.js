@@ -21,3 +21,31 @@ function hideSignupPopup(){
   document.getElementById("newsignup").style.display = "block";   
 }
 
+document.getElementById("loginform").onsubmit = function(event) {
+event.preventDefault(); 
+  var textField = document.getElementById("userid");
+  var password = document.getElementById("password");
+  var errorText = document.getElementById("errorText");
+  var errorText1 = document.getElementById("errorText1");
+
+  if (textField.value.trim() === "") {
+    // The text field is empty, display the error message
+    errorText.textContent = "Field cannot be empty!";
+    textField.style.border = "1px solid red";
+  } else {
+    // The text field is not empty, clear the error message and reset the border
+    errorText.textContent = "";
+    textField.style.border = "1px solid #ccc";
+  }
+  if (password.value.trim() === "") {
+    // The text field is empty, display the error message
+    errorText1.textContent = "Field cannot be empty!";
+    password.style.border = "1px solid red";
+  } else {
+    // The text field is not empty, clear the error message and reset the border
+    errorText1.textContent = "";
+    password.style.border = "1px solid #ccc";
+  }
+};
+
+

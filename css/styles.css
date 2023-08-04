@@ -16,6 +16,10 @@
 .signupview{
   display: none;
 }
+.errortext{
+  color: red;
+  font-size: 12px;
+}
 #signupbtn{
   display: none;
 }
@@ -126,13 +130,7 @@
     border-bottom: 1px solid #e0e0e0;
     outline:none;
   } 
-  #s{
-    padding: 0.5rem 0;    
-    border:none;
-    width:300px;
-    border-bottom: 1px solid #e0e0e0;
-    outline:none;
-  }   
+    
    
 .label{
   position:absolute

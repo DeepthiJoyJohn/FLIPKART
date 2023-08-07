@@ -24,7 +24,7 @@ main{
 .logo img{
     width:80px;
 }
-header{
+.headerclass{
     background-color:#2874F0;
     height:52px;
     display:flex;

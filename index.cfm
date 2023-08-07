@@ -4,7 +4,8 @@
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <!--div for login-->
@@ -29,34 +30,33 @@
                             <span id="errorText" class="errortext"></span><br>
                             <label class="label">Enter Password</label>
                             <input class="input" id="password" type="Password"/><br>  
-                            <span id="errorText1" class="errortext"></span>              
+                            <span id="errorText1" class="errortext"></span>   
+                            <span id="errorText3" class="errortext"></span>            
                             <div class="terms">
-                                By continuing, you agree to Flipkart's 
+                                 By continuing, you agree to Flipkart's 
                                 <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/terms">Terms of Use</a>
-                                and <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy</a>.
-                            </div>     
-                            <button class="loginbtn" type="Submit" id="loginbtn">Login</button> 
+                                and <a class="_2ARnXM" target="_blank" href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy</a>.                                
+                            </div>                                             
+                            <button class="loginbtn" type="Submit" id="login_btn">Login</button>                             
                             <div class="signupview" id="signupview">
-                                <button id="signupbtn" class="loginbtn" type="Submit">Continue</button> 
+                                <button id="signupbtn" class="loginbtn" type="button">Continue</button> 
                                 <a class="exeusrlink" href="javascript:hideSignupPopup()">
                                     <span class="exelink">Existing User? Log in</span>
                                 </a>  
-                            </div>
+                            </div>                            
                             <div class="newsignup" id="newsignup">
                                 <a href="javascript:showSignupPopup()">
                                     New to Flipkart? Create an account
                                 </a>
                             </div> 
-                        </form>         
+                        </form>
                     </div>
                 </div>
                 <span class="close" onclick="closeLoginPopup()">&times;</span><br>                
             </div>
         </div>
         <!--End-->
-
-        
-        <header>
+        <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
                     <img src="Images/Icon/icon2.png"/>                    
@@ -180,15 +180,9 @@
                         
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         </main>
         <script src="js/javascript.js" type="module"></script>
         <script src="js/scripts.js"></script>  
-    </body> 
-    <cfif structKeyExists(form, "loginbtn")>
-        <cfinvoke component="FLIPKART.Components.login" method="checkuser" 
-		searchUsername="#form.userid#" returnVariable="res">
-       <p style="color: red;">#res#</p>
-    </cfif>
+    </body>     
 </html>

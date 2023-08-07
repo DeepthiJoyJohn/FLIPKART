@@ -1,3 +1,19 @@
+
+ document.getElementById("login_btn").onclick = function() {
+  
+    var userid=document.getElementById('userid').value;
+    var password = document.getElementById("password").value;
+    
+    $.ajax({
+      type: "GET",
+      url: 'Components/login.cfc?method=checkuser&searchUsername='+userid+'&password='+password,
+      cache: false,
+      success: function(data){
+        $('#errorText3').html(data);	      
+      },
+    });
+};
+
 function closeLoginPopup() {  
   document.getElementById("loginPopup").style.display = "none";
 }

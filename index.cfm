@@ -39,7 +39,7 @@
                             </div>                                             
                             <button class="loginbtn" type="Submit" id="login_btn">Login</button>                             
                             <div class="signupview" id="signupview">
-                                <button id="signupbtn" class="loginbtn" type="button">Continue</button> 
+                                <button id="signupbtn" class="loginbtn" type="Submit">Continue</button> 
                                 <a class="exeusrlink" href="javascript:hideSignupPopup()">
                                     <span class="exelink">Existing User? Log in</span>
                                 </a>  
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
+                
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top">

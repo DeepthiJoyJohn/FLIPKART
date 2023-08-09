@@ -78,16 +78,17 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                
+                <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
+                <a href="javascript:showLoginPopup()" id="myaccountbtn" class="myaccount">My Account</a>
                 <div class="login_menu">
                     <div class="login_menu_list">
-                        <div class="login_menu_top">
+                        <div class="login_menu_top" id="login_menu_top_id">
                             <p>New Customer?</p>
-                            <a href="#">Sign Up</a>
+                            <a href="javascript:showSignupPopup()">Sign Up</a>                            
                         </div>
                         <div class="menu_nav_link">
                             <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
-                                <i class="fa fa-user-circle-o"></i>
+                                <i class="fa fa-user-circle-o fa-lg iconcolor"></i>
                                 <p>My Profile</p>
                             </a>
                             <a href="#">
@@ -110,7 +111,14 @@
                                 <img src="Icon/giftcard.svg" class="menu_nav_icon"/>
                                 <p>Gift Cards</p>
                             </a>
+                            <a href="javascript:logout()">
+                                <span class="a_logout" id="a_logout">
+                                    <i class="fa fa-sign-out fa-lg iconcolor"></i>  
+                                    <p>Log Out</p>
+                                </span>
+                            </a>
                         </div>
+                        
                     </div>
                 </div>
             </div>

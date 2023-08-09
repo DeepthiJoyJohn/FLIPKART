@@ -13,7 +13,9 @@
     </cffunction>
 
     <!--- Clear session data --->
-    <cffunction name="clearSessionData" access="public" returntype="void">
-        <cfset structClear(session)>
+    <cffunction name="clearSessionData" access="remote" >
+        <cflogout> 
+        <cfset structDelete(session, "username")>
+        <cfset structDelete(session, "loggedIn")>
     </cffunction>
 </cfcomponent>

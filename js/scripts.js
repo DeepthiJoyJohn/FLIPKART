@@ -1,10 +1,3 @@
-
- document.getElementById("login_btn").onclick = function() {
-  
-    
-};
-
-
 function closeLoginPopup() {  
   window.location.reload();
   document.getElementById("loginPopup").style.display = "none";
@@ -27,6 +20,7 @@ function showSignupPopup() {
   errorText.textContent="";
   errorText1.textContent="";
   errorText3.textContent=""; 
+  document.getElementById("loginPopup").style.display = "block";
   document.getElementById("newsignup").style.display = "none"; 
   document.getElementById("signupview").style.display = "block";
   document.getElementById("signupview1").style.display = "block";  
@@ -86,12 +80,33 @@ document.getElementById("loginform").onsubmit = function(event) {
             type: "GET",
             url: 'Components/login.cfc?method=checkuser&searchUsername='+textField.value+'&password='+password.value+'&btnid='+submitButtonId,
             cache: false,
-            success: function(data){        
-              $('#errorText3').html(data);	      
+            success: function(data){
+              $('#errorText3').html(data);	
+              var html = document.getElementById("errorText3").textContent;   
+              if(html==""){
+                document.getElementById("loginPopup").style.display = "none";
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("login_menu_top_id").style.display = "none";
+                document.getElementById("myaccountbtn").style.display = "block";
+                document.getElementById("a_logout").style.display = "flex";
+              }
+               
             },
           });
     }
   }
 };
+function logout(){
+  $.ajax({
+    type: "GET",
+    url: 'Components/SessionManager.cfc?method=clearSessionData',
+    cache: false,
+    success: function(data){
+      window.location.reload();
+       
+    },
+  });
 
+
+}
 

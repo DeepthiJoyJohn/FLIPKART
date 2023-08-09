@@ -1,3 +1,8 @@
+$(function() {
+    // Your JavaScript code here
+    // This code will run when the DOM is ready
+    alert("Document is ready!");
+});
 export const featureProductNav = [
 	{	
 		id:"featureProductNav_1",

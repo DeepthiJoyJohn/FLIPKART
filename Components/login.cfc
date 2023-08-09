@@ -19,6 +19,13 @@
                     <cfqueryparam value="#password#" cfsqltype="cf_sql_varchar">                    
                 )
             </cfquery>
+            <cfset session.loggedIn = true>
+            <cfset session.username = #searchUsername#>
+            <cfset res="">
+        <cfelseif getUser.userCount neq 0 && ("#btnid#" eq "login_btn")>
+            <cfset session.loggedIn = true>
+            <cfset session.username = #searchUsername#>
+            <cfset res="">
         <cfelse>
             <cfset res="User with username #searchUsername# exists in the database.">
         </cfif>

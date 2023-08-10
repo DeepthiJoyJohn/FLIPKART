@@ -1,7 +1,13 @@
 $(function() {
-    // Your JavaScript code here
-    // This code will run when the DOM is ready
-    alert("Document is ready!");
+    $.ajax({
+		type: "GET",
+		url: 'Components/FeaturedProducts.cfc?method=getArrayOfStructures',
+		cache: false,
+		success: function(data){
+		  alert(data);
+		   
+		},
+	  });
 });
 export const featureProductNav = [
 	{	

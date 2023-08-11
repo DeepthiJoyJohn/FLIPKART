@@ -1,14 +1,3 @@
-$(function() {
-    $.ajax({
-		type: "GET",
-		url: 'Components/FeaturedProducts.cfc?method=getArrayOfStructures',
-		cache: false,
-		success: function(data){
-		  alert(data);
-		   
-		},
-	  });
-});
 export const featureProductNav = [
 	{	
 		id:"featureProductNav_1",

@@ -1,4 +1,4 @@
-<html>
+.<html>
     <head>
         <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
@@ -192,5 +192,7 @@
         </main>
         <script src="js/javascript.js" type="module"></script>
         <script src="js/scripts.js"></script>  
-    </body>     
+        
+    </body>    
+
 </html>

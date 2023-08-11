@@ -1,3 +1,4 @@
+
 function closeLoginPopup() {  
   window.location.reload();
   document.getElementById("loginPopup").style.display = "none";

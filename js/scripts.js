@@ -1,14 +1,4 @@
-$(document).ready(function() {
-  $.ajax({
-    type: "GET",
-    url: 'Components/FeaturedProducts.cfc?method=getArrayOfStructures',
-    cache: false,
-    success: function(data){
-      alert(data);
-       
-    },
-  });
-})
+
 
 function closeLoginPopup() {  
   window.location.reload();
@@ -50,7 +40,8 @@ function hideSignupPopup(){
   document.getElementById("newsignup").style.display = "block";   
 }
 
-document.getElementById("loginform").onsubmit = function(event) {     
+document.getElementById("loginform").onsubmit = function(event) {  
+     
   var submitButtonId = event.submitter.id; 
   event.preventDefault(); 
   var textField = document.getElementById("userid");

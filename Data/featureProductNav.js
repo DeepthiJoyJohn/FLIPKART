@@ -3,7 +3,7 @@ export const featureProductNav = [
 		id:"featureProductNav_1",
 		img:"Images/items/grocery.png",
 		name:"Grocery",
-		link:"https://www.flipkart.com/grocery-supermart-store?marketplace=GROCERY&fm=neo%2Fmerchandising&iid=M_79d96edb-43d5-4448-8dfe-e8befa801a8a_1_FBB4FBSRQIC6_MC.4BYE6NISISOE&otracker=hp_rich_navigation_10_1.navigationCard.RICH_NAVIGATION_Grocery_4BYE6NISISOE&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_10_L0_view-all&cid=4BYE6NISISOE",
+		link:"productlisting.cfm",
 		subNavigation:false,
 	},
 	{	

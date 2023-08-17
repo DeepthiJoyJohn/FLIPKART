@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/scripts.js"></script>  
     </head>
     <body>
         <!--div for login-->
@@ -80,7 +79,7 @@
             </div>
             <div class="loginBtn_container">
                 <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
-                <a href="javascript:showLoginPopup()" id="myaccountbtn" class="myaccount">My Account</a>
+                <a id="myaccountbtn" class="myaccount">My Account</a>
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top" id="login_menu_top_id">
@@ -191,6 +190,7 @@
                 </div>
             </div>            
         </main>
-        <script src="js/javascript.js" type="module"></script>        
+        <script src="js/javascript.js" type="module"></script>   
+        <script src="js/scripts.js"></script>       
     </body> 
 </html>

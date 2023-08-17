@@ -1,4 +1,15 @@
-
+$(document).ready(function() {
+  alert("Df");
+    $.ajax({
+    type: "GET",
+    url: 'Components/FeaturedProducts.cfc?method=getArrayOfStructures',
+    cache: false,
+    success: function(data){
+     alert(data);
+      
+    },
+	});
+});
 
 function closeLoginPopup() {  
   window.location.reload();
@@ -40,19 +51,16 @@ function hideSignupPopup(){
   document.getElementById("newsignup").style.display = "block";   
 }
 
-document.getElementById("loginform").onsubmit = function(event) {  
-     
+document.getElementById("loginform").onsubmit = function(event) {       
   var submitButtonId = event.submitter.id; 
   event.preventDefault(); 
   var textField = document.getElementById("userid");
   var password = document.getElementById("password");
   var signupbtn= document.getElementById("signupbtn");
   var login_btn= document.getElementById("login_btn");
-
   var errorText = document.getElementById("errorText");
   var errorText1 = document.getElementById("errorText1");
   var errorText3 = document.getElementById("errorText3");
-
   var flag=0;
   errorText.textContent="";
   errorText1.textContent="";
@@ -61,7 +69,7 @@ document.getElementById("loginform").onsubmit = function(event) {
     // The text field is empty, display the error message
     errorText.textContent = "Field cannot be empty!";
     textField.style.border = "1px solid red";    
-    flag=1;
+    flag=1;    
   } else {
     // The text field is not empty, clear the error message and reset the border
     errorText.textContent = "";
@@ -77,8 +85,9 @@ document.getElementById("loginform").onsubmit = function(event) {
     errorText1.textContent = "";
     password.style.border = "1px solid #ccc";
   }
+  
   if(login_btn){   
-    if(flag==0){
+    if(flag==0){      
           $.ajax({
             type: "GET",
             url: 'Components/login.cfc?method=checkuser&searchUsername='+textField.value+'&password='+password.value+'&btnid='+submitButtonId,
@@ -92,8 +101,7 @@ document.getElementById("loginform").onsubmit = function(event) {
                 document.getElementById("login_menu_top_id").style.display = "none";
                 document.getElementById("myaccountbtn").style.display = "block";
                 document.getElementById("a_logout").style.display = "flex";
-              }
-               
+              }               
             },
           });
     }

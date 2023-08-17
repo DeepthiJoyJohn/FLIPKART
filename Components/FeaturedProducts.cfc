@@ -6,10 +6,7 @@
             LIMIT 10
         </cfquery>
         <cfset arrayOfStructures = []>
-        <cfloop query="productclass">
-            <cfset structure = {id = productclass.id}>
-            <cfset arrayAppend(arrayOfStructures, structure1)>
-        </cfloop>
-        <cfreturn arrayOfStructures>
+        <cfset xyz="abc">
+                <cfreturn xyz>               
      </cffunction>    
 </cfcomponent>

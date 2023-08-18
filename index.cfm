@@ -191,6 +191,7 @@
             </div>            
         </main>
         <script src="js/javascript.js" type="module"></script>   
-        <script src="js/scripts.js"></script>       
+        <script src="js/scripts.js"></script>  
+        
     </body> 
 </html>

@@ -1,15 +1,3 @@
-$(document).ready(function() {
-  alert("Df");
-    $.ajax({
-    type: "GET",
-    url: 'Components/FeaturedProducts.cfc?method=getArrayOfStructures',
-    cache: false,
-    success: function(data){
-     alert(data);
-      
-    },
-	});
-});
 
 function closeLoginPopup() {  
   window.location.reload();

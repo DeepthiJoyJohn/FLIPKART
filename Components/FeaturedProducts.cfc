@@ -1,6 +1,6 @@
 component {
     remote any function getArrayOfStructures() {
-        var data = [];
+        var featureProductNav = [];
         var myQuery = queryExecute(
             "SELECT *
             FROM productclass 
@@ -8,12 +8,10 @@ component {
             [],
             {datasource: "FLIPKART"}
         );
-
         for (var row in myQuery) {
-            data.append({"id": row.id, "name": row.productclassname,"img":row.productclassimg,"link":row.productlink},
-            "subNavigation":"false");
+            featureProductNav.append({"id": row.id, "name": row.productclassname,"img":row.productclassimg,
+            "link":row.productlink,"subNavigation":"false"});
         }
-
-        return serializeJSON(data);
+        return serializeJSON(featureProductNav);
     }
 }

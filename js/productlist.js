@@ -5,12 +5,13 @@ const productContainers = document.querySelectorAll('.product');
     const quantityInput = container.querySelector('.quantity-input');
     const plusButton = container.querySelector('.plus-button');
     const minusButton = container.querySelector('.minus-button');
+    let stock = parseInt(minusButton.value);
     // Add a click event listener to the plus button
     plusButton.addEventListener('click', () => {
         // Parse the current quantity value as an integer
         let quantity = parseInt(quantityInput.value);
-
         // Increment the quantity
+        if(quantity<stock)
         quantity++;
 
         // Update the quantity input field with the new value
@@ -26,6 +27,6 @@ const productContainers = document.querySelectorAll('.product');
         quantity--;
         // Update the quantity input field with the new value
         quantityInput.value = quantity;
-      }
+        }
     });
   });

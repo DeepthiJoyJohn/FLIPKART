@@ -15,9 +15,7 @@ header {
   color: white;
   padding: 10px;
 }
-.cart-badge {
-  
-  
+.cart-badge {  
   right: 0;
   background-color: #ff000d; /* Cart badge background color */
   color: #fff; /* Cart badge text color */

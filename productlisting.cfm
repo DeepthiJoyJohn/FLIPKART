@@ -107,7 +107,7 @@
             </div>   
             <div class="cart_link">
                 <div class="cart-badge">5</div>
-                <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>                
+                <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>                 
                 <p> Cart</p>
             </div>         
   </header>
@@ -122,9 +122,9 @@
         <p>#result.productdescription#</p>
         <span class="price">$#result.productprize#</span>
         <div class="product">
-          <button class="minus-button">-</button>
+          <button class="minus-button" id="minus-button"  value="#result.productstock#">-</button>
           <input class="quantity-input" type="text" value="0">
-          <button class="plus-button">+</button>
+          <button class="plus-button" value="#result.productstock#">+</button>
           <button class="add-to-cart-button">Add to Cart</button>
         </div>
       </div>

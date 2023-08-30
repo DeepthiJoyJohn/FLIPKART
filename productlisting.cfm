@@ -115,6 +115,11 @@
     <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
       <cfinvokeargument name="productclassid" value="1">
     </cfinvoke>
+    <cfif isDefined("form.addtocart")>
+        <cfinvoke component="Components/productlist" method="orderinsert" returnvariable="orderinsertvar">
+            <cfinvokeargument name="productclassid" value="form.">
+        </cfinvoke>	
+    </cfif>
     <cfoutput query="result">
       <div class="product-card">
         <img src="Images/items/homeandkitchen.png" alt="Product 1">
@@ -125,7 +130,7 @@
           <button class="minus-button" id="minus-button"  value="#result.productstock#">-</button>
           <input class="quantity-input" type="text" value="0">
           <button class="plus-button" value="#result.productstock#">+</button>
-          <button class="add-to-cart-button">Add to Cart</button>
+          <button class="add-to-cart-button" type="submit" name="addtocart" value="#result.id#">Add to Cart</button>
         </div>
       </div>
     </cfoutput>    

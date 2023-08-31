@@ -158,6 +158,7 @@
             <div class="featureProducts">
                 <div class="featureProducts_list">                    
                 </div>
+                
             </div>
             <!--Image Slider-->
             <div class="imageSliderContainer">

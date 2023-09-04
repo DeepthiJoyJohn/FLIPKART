@@ -19,5 +19,13 @@
                 <cfqueryparam value="19.99" cfsqltype="CF_SQL_NUMERIC">
             )
         </cfquery>
+    </cffunction>   
+     <cffunction name="orderupdate" access="remote">
+        <cfargument name="productclassid">        
+        <cfquery datasource="FLIPKART">
+            UPDATE orderitemtable SET productid=<cfqueryparam value="101" cfsqltype="CF_SQL_INTEGER">
+            , quantity=<cfqueryparam value="Widget" cfsqltype="CF_SQL_VARCHAR">, unitprize=<cfqueryparam value="19.99" cfsqltype="CF_SQL_NUMERIC">
+            WHERE productclassid="arguements.productclassid"
+        </cfquery>
     </cffunction>    
 </cfcomponent>

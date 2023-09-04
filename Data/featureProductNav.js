@@ -1,5 +1,3 @@
-
-
 export const featureProductNav = [
 	{	
 		id:"featureProductNav_1",

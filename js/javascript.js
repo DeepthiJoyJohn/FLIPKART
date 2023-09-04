@@ -1,4 +1,4 @@
-import { featureProductNav } from "../Components/FeaturedProducts.cfc?method=getArrayOfStructures";
+import { featureProductNav } from "../Data/featureProductNav.js";
 import {imageSlider} from "../Data/ImageSlider.js"
 import {electronicsProductData} from "../Data/electronicProduct.js"
 

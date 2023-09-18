@@ -106,6 +106,13 @@
                 </div>
             </div>   
             <div class="cart_link">
+                <cfif structKeyExists(session, "username")>
+                    <cfinvoke component="Components/productlist" method="countofcart" >
+                      <cfoutput>nbhgyt</cfoutput>  
+                    </cfinvoke>                   
+                </cfif>
+
+
                 <div class="cart-badge">5</div>
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>                 
                 <p> Cart</p>
@@ -123,9 +130,9 @@
         <span class="price">$#result.productprize#</span>
         <div class="product">
           <button class="minus-button" id="minus-button"  value="#result.productstock#">-</button>
-          <input class="quantity-input" type="text" value="0">
+          <input class="quantity-input" id="#result.id#" type="text" value="0">
           <button class="plus-button" value="#result.productstock#">+</button>
-          <button class="add-to-cart-button" type="submit" name="addtocart" value="#result.id#">Add to Cart</button>
+          <button class="add-to-cart-button" type="submit" name="addtocart" data-product-id="#result.id#">Add to Cart</button>
         </div>
       </div>
     </cfoutput>    

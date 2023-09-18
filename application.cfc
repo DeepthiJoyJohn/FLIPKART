@@ -7,7 +7,7 @@
 
     <!--- Application-level functions --->
     <cffunction name="onApplicationStart" returnType="boolean" output="false">
-        <cfset datasoursename="FLIPKART">
+        <cfset application.datasoursename="FLIPKART">
         <cfreturn true>
     </cffunction>
 

@@ -20,19 +20,27 @@
         <cfreturn local.qry_getproductdetails> 
     </cffunction>
 
+    <cffunction name="countofcart" access="public">
+        
+        
+    </cffunction>
+
     <cffunction name="orderinsert" access="remote">
         <cfargument name="buttonval"> 
+        <cfargument name="quantity"> 
         <cfcontent type="application/json">            
         <cfquery datasource="FLIPKART">
-            INSERT INTO shoppingcart(userid,productid,quantity)
+            INSERT INTO shoppingcart(username,productid,quantity,cartstatus,addedon)
             VALUES 
             (
-                <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
+                <cfqueryparam value="#session.username#" cfsqltype="CF_SQL_VARCHAR">,
                 <cfqueryparam value="#arguments.buttonval#" cfsqltype="CF_SQL_INTEGER">,
-                <cfqueryparam value="#arguments.buttonval#" cfsqltype="CF_SQL_INTEGER">                
+                <cfqueryparam value="#arguments.quantity#" cfsqltype="CF_SQL_INTEGER">,
+                <cfqueryparam value="incart" cfsqltype="CF_SQL_VARCHAR">,   
+                <cfqueryparam value="#now()#" cfsqltype="timestamp">      
             )
         </cfquery>  
-        <cfoutput>{"message": "#session.userid#"}</cfoutput> 
+        <cfoutput>{"message": "#session.username#"}</cfoutput> 
     </cffunction>
 
     <cffunction name="orderupdate" access="remote">

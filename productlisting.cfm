@@ -114,12 +114,7 @@
   <main class="product-list">
     <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
       <cfinvokeargument name="productclassid" value="1">
-    </cfinvoke>
-    <cfif isDefined("form.addtocart")>
-        <cfinvoke component="Components/productlist" method="orderinsert" returnvariable="orderinsertvar">
-            <cfinvokeargument name="productclassid" value="form.">
-        </cfinvoke>	
-    </cfif>
+    </cfinvoke>    
     <cfoutput query="result">
       <div class="product-card">
         <img src="Images/items/homeandkitchen.png" alt="Product 1">

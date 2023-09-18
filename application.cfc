@@ -7,8 +7,7 @@
 
     <!--- Application-level functions --->
     <cffunction name="onApplicationStart" returnType="boolean" output="false">
-        <!--- This function runs when the application starts --->
-        <cfset application.myGlobalVar = "Hello, Global Variable!">
+        <cfset datasoursename="FLIPKART">
         <cfreturn true>
     </cffunction>
 

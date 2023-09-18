@@ -8,19 +8,34 @@
         </cfquery>
         <cfreturn getproducts>
     </cffunction>
+
+    <cffunction name="fun_getproductdetails" access="public">
+        <cfargument name="productid">
+        <cfquery name="local.qry_getproductdetails" datasource="application.datasoursename">
+            SELECT *
+            FROM productclassitem
+            WHERE
+            id="arguments.productid"
+        </cfquery>
+        <cfreturn local.qry_getproductdetails> 
+    </cffunction>
+
     <cffunction name="orderinsert" access="remote">
-        <cfargument name="productclassid">        
+        <cfargument name="buttonval"> 
+        <cfcontent type="application/json">            
         <cfquery datasource="FLIPKART">
-            INSERT INTO orderitemtable (productid, quantity, unitprize)
+            INSERT INTO shoppingcart(userid,productid,quantity)
             VALUES 
             (
-                <cfqueryparam value="101" cfsqltype="CF_SQL_INTEGER">,
-                <cfqueryparam value="Widget" cfsqltype="CF_SQL_VARCHAR">,
-                <cfqueryparam value="19.99" cfsqltype="CF_SQL_NUMERIC">
+                <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
+                <cfqueryparam value="#arguments.buttonval#" cfsqltype="CF_SQL_INTEGER">,
+                <cfqueryparam value="#arguments.buttonval#" cfsqltype="CF_SQL_INTEGER">                
             )
-        </cfquery>
-    </cffunction>   
-     <cffunction name="orderupdate" access="remote">
+        </cfquery>  
+        <cfoutput>{"message": "#session.userid#"}</cfoutput> 
+    </cffunction>
+
+    <cffunction name="orderupdate" access="remote">
         <cfargument name="productclassid">        
         <cfquery datasource="FLIPKART">
             UPDATE orderitemtable SET productid=<cfqueryparam value="101" cfsqltype="CF_SQL_INTEGER">

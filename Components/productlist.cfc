@@ -1,3 +1,4 @@
+<!--test-->
 <cfcomponent>
     <cffunction name="productslist" access="remote">
         <cfargument name="productclassid">        

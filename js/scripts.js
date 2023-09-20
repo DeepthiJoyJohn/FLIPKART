@@ -1,20 +1,21 @@
 $(document).ready(function() {
-  $(".add-to-cart-button").click(function() {
-    
+  $(".add-to-cart-button").click(function() {    
       // Get the value of the button that was clicked
       var buttonval = $(this).attr("data-product-id");
-      var qty=document.getElementById(buttonval).value;
-      
-      
+      document.getElementById(buttonval).value=1;      
+      var spanforaddrem="span_"+buttonval;
+      var additembtn="additembtn_"+buttonval;
+      document.getElementById(spanforaddrem).style.display="block";
+      document.getElementById(additembtn).style.display="none";
       // Use AJAX to invoke the CFC method based on the button ID
       $.ajax({
           type: "POST",
           url: "Components/productlist.cfc?method=orderinsert",
-          data: { buttonval: buttonval,quantity:qty},
+          data: { buttonval: buttonval},
           dataType: "json", // Assuming the CFC returns JSON
           success: function(response) {
               // Handle the CFC method response here
-              alert(response.message);
+             alert(response);
           },
           error: function(xhr, textStatus, errorThrown) {
               // Handle any errors here
@@ -108,7 +109,7 @@ document.getElementById("loginform").onsubmit = function(event) {
             success: function(data){
               $('#errorText3').html(data);	
               var html = document.getElementById("errorText3").textContent;   
-              if(html==""){
+              if(html==""){                
                 document.getElementById("loginPopup").style.display = "none";
                 document.getElementById("loginBtn").style.display = "none";
                 document.getElementById("login_menu_top_id").style.display = "none";

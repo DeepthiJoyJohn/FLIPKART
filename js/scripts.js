@@ -1,30 +1,3 @@
-$(document).ready(function() {
-  $(".add-to-cart-button").click(function() {    
-      // Get the value of the button that was clicked
-      var buttonval = $(this).attr("data-product-id");
-      document.getElementById(buttonval).value=1;    
-       
-      var spanforaddrem="span_"+buttonval;
-      var additembtn="additembtn_"+buttonval;
-      document.getElementById(spanforaddrem).style.display="block";
-      document.getElementById(additembtn).style.display="none";
-      // Use AJAX to invoke the CFC method based on the button ID
-      $.ajax({
-          type: "POST",
-          url: "Components/productlist.cfc?method=orderinsert",
-          data: { buttonval: buttonval},
-          dataType: "json", // Assuming the CFC returns JSON
-          success: function(response) {
-              // Handle the CFC method response here
-             alert(response);
-          },
-          error: function(xhr, textStatus, errorThrown) {
-              // Handle any errors here
-              alert("Error: " + textStatus + " (" + errorThrown + ")");
-          }
-      });
-  });
-});
 
 function closeLoginPopup() {  
   window.location.reload();

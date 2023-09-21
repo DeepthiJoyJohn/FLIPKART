@@ -1,4 +1,4 @@
-<!--test-->
+
 <cfcomponent>
 
     <cffunction name="productslist" access="remote">
@@ -13,9 +13,9 @@
 
     <cffunction name="fun_getproductdetails" access="public">
         <cfargument name="productid">
-        <cfquery name="local.qry_getproductdetails" datasource="application.datasoursename">
+        <cfquery name="local.qry_getproductdetails" datasource="#application.datasoursename#">
             SELECT *
-            FROM productclassitem
+            FROM productclassitem 
             WHERE
             id="arguments.productid"
         </cfquery>
@@ -50,7 +50,7 @@
 
     <cffunction name="orderinsert" access="remote">
         <cfargument name="buttonval"> 
-        <cfset cartvalpresent=fun_checkcart()>        
+        <cfset local.cartvalpresent=fun_checkcart()>        
         <cfif cartvalpresent.recordCount eq 0>
             <cfquery name="qry_cartinsert" datasource="#application.datasoursename#">
                 INSERT 
@@ -61,19 +61,10 @@
                     <cfqueryparam value="#now()#" cfsqltype="timestamp">      
                 )
             </cfquery>
-            <cfset cartid=fun_checkcart()>
-            <cfquery name="qry_insertcartitem" datasource="#application.datasoursename#">
-            INSERT 
-            INTO shoppingcartitem(cartid,productid,quantity)
-            VALUES 
-                (
-                    <cfqueryparam value="#cartid.id#" cfsqltype="cf_sql_integer">, 
-                    <cfqueryparam value="#arguments.buttonval#" cfsqltype="cf_sql_integer">,                             
-                    <cfqueryparam value='1' cfsqltype="cf_sql_integer">      
-                )
-            </cfquery>
+            <cfset local.cartvalpresent=fun_checkcart()>
+            <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.buttonval,"1")>    
         <cfelse>
-            <cfset fun_insertcartitem(cartvalpresent.id,arguments.buttonval,"1")>    
+            <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.buttonval,"1")>    
         </cfif>            
     </cffunction>
 

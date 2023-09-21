@@ -61,9 +61,18 @@
                 )
             </cfquery>
             <cfset cartid=fun_checkcart()>
-            <cfset fun_insertcartitem(cartid.id,arguments.buttonval,'1')>
+            <cfquery name="qry_insertcartitem" datasource="#application.datasoursename#">
+            INSERT 
+            INTO shoppingcartitem(cartid,productid,quantity)
+            VALUES 
+                (
+                    <cfqueryparam value="#cartid.id#" cfsqltype="cf_sql_integer">, 
+                    <cfqueryparam value="#arguments.buttonval#" cfsqltype="cf_sql_integer">,                             
+                    <cfqueryparam value='1' cfsqltype="cf_sql_integer">      
+                )
+            </cfquery>
         <cfelse>
-            <cfset fun_insertcartitem(cartvalpresent.id,arguments.buttonval,'1')>    
+            <cfset fun_insertcartitem(cartvalpresent.id,arguments.buttonval,"1")>    
         </cfif>            
     </cffunction>
 

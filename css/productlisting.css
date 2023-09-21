@@ -64,6 +64,9 @@ footer {
   display: flex;
   align-items: center;
 }
+.addrmvbtnspan {
+  display: none;
+}
 
 /* Styling for the minus button */
 .minus-button {

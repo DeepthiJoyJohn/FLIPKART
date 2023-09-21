@@ -106,6 +106,13 @@
                 </div>
             </div>   
             <div class="cart_link">
+                <cfif structKeyExists(session, "username")>
+                    <cfinvoke component="Components/productlist" method="countofcart" >
+                      <cfoutput>nbhgyt</cfoutput>  
+                    </cfinvoke>                   
+                </cfif>
+
+
                 <div class="cart-badge">5</div>
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>                 
                 <p> Cart</p>

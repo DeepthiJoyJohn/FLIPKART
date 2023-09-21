@@ -30,3 +30,4 @@ const productContainers = document.querySelectorAll('.product');
         }
     });
   });
+

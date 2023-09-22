@@ -31,6 +31,21 @@
         <cfreturn qry_userQuery>
     </cffunction>
 
+    <cffunction name="fun_checkcartitem" access="public" returntype="query">  
+        <cfargument name="productid">      
+        <cfquery name="qry_chkcartitemQuery" datasource="#application.datasoursename#">
+            SELECT * 
+            FROM shoppingcartitem 
+            WHERE cartid=<cfqueryparam value="#session.cartid#" cfsqltype="cf_sql_integer">
+            <cfif arguments.productid neq "">
+                AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="cf_sql_integer">
+            <cfelse>
+                AND quantity <> 0
+            </cfif>
+        </cfquery>
+        <cfreturn qry_chkcartitemQuery>
+    </cffunction>
+
     <cffunction name="fun_insertcartitem" access="public" returntype="query">   
         <cfargument name="cartid"> 
         <cfargument name="productid"> 
@@ -48,10 +63,11 @@
         <cfreturn qry_insertcartitem>
     </cffunction>
 
-    <cffunction name="orderinsert" access="remote">
-        <cfargument name="buttonval"> 
-        <cfset local.cartvalpresent=fun_checkcart()>        
-        <cfif cartvalpresent.recordCount eq 0>
+    <cffunction name="fun_cartinsert" access="remote">
+        <cfargument name="productid"> 
+        <cfargument name="quantity"> 
+        <cfset local.cartvalpresent=fun_checkcart()>               
+        <cfif local.cartvalpresent.recordCount eq 0>
             <cfquery name="qry_cartinsert" datasource="#application.datasoursename#">
                 INSERT 
                 INTO shoppingcart(userid,addedon)
@@ -62,18 +78,41 @@
                 )
             </cfquery>
             <cfset local.cartvalpresent=fun_checkcart()>
-            <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.buttonval,"1")>    
+            <cfset session.cartid=local.cartvalpresent.cartid[1]>
+            <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.productid,arguments.quantity)>    
         <cfelse>
-            <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.buttonval,"1")>    
-        </cfif>            
+            <cfset session.cartid=local.cartvalpresent.cartid[1]>
+            <cfset local.cartitemvalpresent=fun_checkcartitem(arguments.productid)>
+            <cfif local.cartitemvalpresent.recordCount eq 0>
+                <cfset fun_insertcartitem(local.cartvalpresent.cartid[1],arguments.productid,arguments.quantity)>   
+            <cfelse>
+                <cfset fun_cartupdate(arguments.productid,arguments.quantity)>   
+            </cfif> 
+        </cfif>  
+        <cfreturn "message:success">          
     </cffunction>
 
-    <cffunction name="orderupdate" access="remote">
-        <cfargument name="productclassid">        
-        <cfquery datasource="FLIPKART">
-            UPDATE orderitemtable SET productid=<cfqueryparam value="101" cfsqltype="CF_SQL_INTEGER">
-            , quantity=<cfqueryparam value="Widget" cfsqltype="CF_SQL_VARCHAR">, unitprize=<cfqueryparam value="19.99" cfsqltype="CF_SQL_NUMERIC">
-            WHERE productclassid="arguements.productclassid"
+    <cffunction name="fun_cartupdate" access="remote">
+        <cfargument name="productid"> 
+        <cfargument name="quantity">        
+        <cfquery name="qry_cartupdate" datasource="#application.datasoursename#">
+            UPDATE shoppingcartitem
+            SET quantity=<cfqueryparam value="#arguments.quantity#" cfsqltype="CF_SQL_INTEGER">            
+            WHERE cartid=<cfqueryparam value="#session.cartid#" cfsqltype="CF_SQL_INTEGER"> 
+            AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="CF_SQL_INTEGER">            
         </cfquery>
-    </cffunction>    
+    </cffunction>  
+
+    <cffunction name="fun_gettotalcartprice" access="public">             
+        <cfquery name="local.qry_gettotalcartprice" datasource="#application.datasoursename#">
+            SELECT SUM((shoppingcartitem.quantity*productclassitem.productprize)) AS prize 
+            FROM shoppingcartitem 
+            INNER JOIN 
+            productclassitem ON (productclassitem.id=shoppingcartitem.productid)
+            WHERE
+            cartid=<cfqueryparam value="#session.cartid#" cfsqltype="CF_SQL_INTEGER">          
+        </cfquery>
+        <cfreturn local.qry_gettotalcartprice.prize>
+    </cffunction>  
+
 </cfcomponent>

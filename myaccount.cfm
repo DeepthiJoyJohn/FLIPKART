@@ -147,8 +147,18 @@
                     </div>
                 </div>
             </div>   
-              
-            <div class="cart_link" onclick="openPopup()>                
+           
+            <div class="cart_link" onclick="openPopup()">
+                 <cfif IsDefined("session.cartid")>       
+                    <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
+                        <cfinvokeargument name="productid" value="0">
+                    </cfinvoke>  
+                    <cfif cartitem1.recordCount gt 0>
+                        <div class="cart-badge">                    
+                            <cfoutput>#cartitem1.recordCount#</cfoutput>                    
+                        </div>
+                    </cfif>
+                </cfif>                 
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>
                 <p> Cart</p>                
             </div>         
@@ -192,6 +202,6 @@
         </main>
         <script src="js/javascript.js" type="module"></script>   
         <script src="js/scripts.js"></script> 
-        <script src="js/productlist.js"></script>                 
+        <script src="js/cart.js"></script>                 
     </body> 
 </html>

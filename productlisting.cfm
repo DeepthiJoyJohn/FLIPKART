@@ -163,7 +163,8 @@
         <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
         <button class="basketbtn" type="button"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Basket &#x20B9;<cfoutput>#price#</cfoutput></button> <br><br>  
     </cfif>
-    <script src="js/productlist.js"></script>  
+    <script src="js/productlist.js"></script>
+    <script src="js/cart.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>          
 </body>

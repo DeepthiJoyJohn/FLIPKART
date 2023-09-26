@@ -89,8 +89,5 @@ productContainers.forEach(container => {
   });
 });
 
-function openPopup() {
-  alert("DF");
-  window.location.href="currentorderpage.cfm"
-}
+
 

@@ -12,6 +12,7 @@
   <title>Product Listing Page</title>
 </head>
 <body>  
+    
     <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -24,6 +25,7 @@
                     </a>
                 </div>
             </div>
+            
             <div class="search_container">
                 <form id="search_form">
                     <input type="text" Placeholder="Search for Products brands and more" id="search_input">
@@ -33,6 +35,7 @@
                     
                 </div>
             </div>
+            
             <div class="loginBtn_container">
                 <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
                 <a id="myaccountbtn" class="myaccount">My Account</a>
@@ -78,6 +81,7 @@
                     </div>
                 </div>
             </div>
+            
             <a class="nav-link" href="#">Become a Seller</a>   
             <div class="more_link">
                 More
@@ -104,40 +108,44 @@
                         </div>
                     </div>
                 </div>
-            </div>   
-            <div class="cart_link" onclick="openPopup()">
-                 <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1">
-                    <cfinvokeargument name="productid" value="">
-                </cfinvoke> 
-                <cfif cartitem1.recordCount gt 0>
-                    <div class="cart-badge">                    
-                        <cfoutput>#cartitem1.recordCount#</cfoutput>                    
-                    </div>
-                </cfif>
+            </div> 
+            <div class="cart_link" onclick="openPopup()">     
+                <cfif IsDefined("session.cartid")>       
+                    <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
+                        <cfinvokeargument name="productid" value="0">
+                    </cfinvoke>  
+                    <cfif cartitem1.recordCount gt 0>
+                        <div class="cart-badge">                    
+                            <cfoutput>#cartitem1.recordCount#</cfoutput>                    
+                        </div>
+                    </cfif>
+                </cfif>                
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>                 
-                <p> Cart</p>
-            </div>         
+                <p> Cart</p>                 
+            </div> 
     </header>
+   
     <main class="product-list">
         <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
-        <cfinvokeargument name="productclassid" value="1">
-        </cfinvoke>    
+            <cfinvokeargument name="productclassid" value="1">
+        </cfinvoke>              
         <cfoutput query="result">  
-            <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem">
-                <cfinvokeargument name="productid" value="#result.id#">
-            </cfinvoke>
-            <cfif cartitem.quantity neq 0>
-                <cfset quantityval="#cartitem.quantity#">
-            <cfelse>
-                <cfset quantityval="1">
-            </cfif>      
+            <cfset quantityval="0">             
+            <cfif IsDefined("session.cartid")>
+                <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem">
+                    <cfinvokeargument name="productid" value="#result.id#">
+                </cfinvoke>                
+                <cfif cartitem.quantity neq 0>
+                    <cfset quantityval="#cartitem.quantity#">            
+                </cfif>  
+            </cfif> 
             <div class="product-card">
                 <img src="Images/items/homeandkitchen.png" alt="Product 1">
                 <h2>#result.productname#</h2>
                 <p>#result.productdescription#</p>
                 <span class="price">$#result.productprize#</span>
                 <div class="product">
-                    <cfif cartitem.quantity gt 0>
+                    <cfif quantityval gt 0>
                         <span class="addrmvbtnspan" id ="span_#result.id#">
                             <button class="minus-button" id="minus-button"  value="#result.productstock#">-</button>
                             <input class="quantity-input" id="#result.id#" type="text" value="#quantityval#">
@@ -150,8 +158,11 @@
             </div>        
         </cfoutput>       
     </main>
-    <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
-    <button class="basketbtn" type="button"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Basket &#x20B9;<cfoutput>#price#</cfoutput></button> <br><br>  
+   
+    <cfif IsDefined("session.cartid")>
+        <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
+        <button class="basketbtn" type="button"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Basket &#x20B9;<cfoutput>#price#</cfoutput></button> <br><br>  
+    </cfif>
     <script src="js/productlist.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>          

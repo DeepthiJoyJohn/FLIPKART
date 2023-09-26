@@ -84,11 +84,12 @@ document.getElementById("loginform").onsubmit = function(event) {
               $('#errorText3').html(data);	
               var html = document.getElementById("errorText3").textContent;   
               if(html==""){                
-                document.getElementById("loginPopup").style.display = "none";
-                document.getElementById("loginBtn").style.display = "none";
-                document.getElementById("login_menu_top_id").style.display = "none";
-                document.getElementById("myaccountbtn").style.display = "block";
-                document.getElementById("a_logout").style.display = "flex";
+                // document.getElementById("loginPopup").style.display = "none";
+                // document.getElementById("loginBtn").style.display = "none";
+                // document.getElementById("login_menu_top_id").style.display = "none";
+                // document.getElementById("myaccountbtn").style.display = "block";
+                // document.getElementById("a_logout").style.display = "flex";
+                window.location.href = "myaccount.cfm";
               }               
             },
           });

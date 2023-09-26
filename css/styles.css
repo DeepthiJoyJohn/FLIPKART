@@ -86,6 +86,17 @@
     position: absolute;
     display:none;
 }
+.myaccount_order{  
+  font-size: 15px;  
+  text-decoration: none;
+  font-weight:550;    
+  background-color:#2874f0;
+  width:100px;
+  margin-left: -45px;
+  margin-top: -7px;
+  position: absolute;
+  
+}
 .iconcolor{
   color:#2874f0; 
 }

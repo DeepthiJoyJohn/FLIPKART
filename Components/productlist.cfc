@@ -3,7 +3,7 @@
 
     <cffunction name="productslist" access="remote">
         <cfargument name="productclassid">        
-        <cfquery name="getproducts" datasource="FLIPKART">
+        <cfquery name="getproducts" datasource="#application.datasoursename#">
             SELECT *
             FROM productclassitem
             WHERE productclassid = <cfqueryparam value="#productclassid#" cfsqltype="cf_sql_integer">
@@ -31,17 +31,17 @@
         <cfreturn qry_userQuery>
     </cffunction>
 
-    <cffunction name="fun_checkcartitem" access="public" returntype="query">  
-        <cfargument name="productid">      
+    <cffunction name="fun_checkcartitem" access="public" returntype="query"> 
+        <cfargument name="productid">              
         <cfquery name="qry_chkcartitemQuery" datasource="#application.datasoursename#">
             SELECT * 
             FROM shoppingcartitem 
             WHERE cartid=<cfqueryparam value="#session.cartid#" cfsqltype="cf_sql_integer">
-            <cfif arguments.productid neq "">
+            <cfif arguments.productid neq "0">
                 AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="cf_sql_integer">
             <cfelse>
-                AND quantity <> 0
-            </cfif>
+                AND quantity <> "0"
+            </cfif>                        
         </cfquery>
         <cfreturn qry_chkcartitemQuery>
     </cffunction>

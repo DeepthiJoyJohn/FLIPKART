@@ -127,6 +127,8 @@ a{
     position:relative;
     z-index: 20;
 }
+
+
 .loginBtn_container a{
     columns: #FIF3F6;
     font-weight: 550;
@@ -144,6 +146,7 @@ a{
     padding-top: 15px;
     display: none;
 }
+
 .login_menu::before{
     position: absolute;
     content:"";    
@@ -449,3 +452,21 @@ a{
     display:flex;
     overflow: hidden;
 }
+.cart-badge {  
+    right: 0;
+    background-color: #ff000d; /* Cart badge background color */
+    color: #fff; /* Cart badge text color */
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 50%;
+  }
+  .cart-badge1 {  
+    right: 0;
+    background-color: #ff000d; /* Cart badge background color */
+    color: #fff; /* Cart badge text color */
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 50%;
+  }

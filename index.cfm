@@ -3,7 +3,7 @@
         <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles.css">       
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
@@ -78,19 +78,14 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
-                <a id="myaccountbtn" class="myaccount">My Account</a>
+                    <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top" id="login_menu_top_id">
                             <p>New Customer?</p>
                             <a href="javascript:showSignupPopup()">Sign Up</a>                            
                         </div>
-                        <div class="menu_nav_link">
-                            <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
-                                <i class="fa fa-user-circle-o fa-lg iconcolor"></i>
-                                <p>My Profile</p>
-                            </a>
+                        <div class="menu_nav_link">                           
                             <a href="#">
                                 <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                                 <p>Flipkart Plus Zone</p>
@@ -111,12 +106,7 @@
                                 <img src="Icon/giftcard.svg" class="menu_nav_icon"/>
                                 <p>Gift Cards</p>
                             </a>
-                            <a href="javascript:logout()">
-                                <span class="a_logout" id="a_logout">
-                                    <i class="fa fa-sign-out fa-lg iconcolor"></i>  
-                                    <p>Log Out</p>
-                                </span>
-                            </a>
+                            
                         </div>
                         
                     </div>
@@ -149,7 +139,8 @@
                     </div>
                 </div>
             </div>   
-            <div class="cart_link">
+
+            <div class="cart_link">                
                 <i class="fa solid fa-shopping-cart" aria-hidden="true"></i>
                 <p> Cart</p>
             </div>         

@@ -13,9 +13,10 @@
     </cffunction>
 
     <!--- Clear session data --->
-    <cffunction name="clearSessionData" access="remote" >
-        <cflogout> 
+    <cffunction name="clearSessionData" access="public" >        
         <cfset structDelete(session, "username")>
         <cfset structDelete(session, "loggedIn")>
+        <cfset structDelete(session, "userid")>
+        <cflocation url="index.cfm" addtoken="false">
     </cffunction>
 </cfcomponent>

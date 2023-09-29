@@ -96,13 +96,13 @@ document.getElementById("loginform").onsubmit = function(event) {
     }
   }
 };
-function logout(){
+function logout(){  
   $.ajax({
     type: "GET",
     url: 'Components/SessionManager.cfc?method=clearSessionData',
     cache: false,
     success: function(data){
-      window.location.reload();
+      window.location.href = "index.cfm";
        
     },
   });

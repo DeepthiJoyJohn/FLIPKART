@@ -102,7 +102,7 @@
                         <span class="pricedetailsspan">PRICE DETAILS</span>
                         <div class="horizontal-line"></div>
                         <div class="pricerow">
-                            <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#price#</div>
+                            <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#Chr(8377)##price#</div>
                         </div>
                         <div class="pricerow">
                             <div class="priceleft">Discount</div><div class="priceright">0.00</div>
@@ -112,7 +112,7 @@
                         </div>
                         <div class="horizontal-line-dashed"></div>
                         <div class="pricerow">
-                            <span class="totalamt">Total  Amount</span><div class="priceright"><b>#price#</b></div>
+                            <span class="totalamt">Total  Amount</span><div class="priceright"><b>#Chr(8377)##price#</b></div>
                         </div>
                         
                     </div>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="orderpdtname">
                                 <a>#orderdetails.productname#</a><br>
-                                <p class="productprize">#orderdetails.productprize#</p>
+                                <p class="productprize">#Chr(8377)##orderdetails.productprize#</p>
                             </div><br>
                             <div class="product">
                                 <span class="addrmvbtnspan">

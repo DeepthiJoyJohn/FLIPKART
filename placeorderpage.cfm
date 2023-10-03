@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/orderpage.css">   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <title>Product Listing Page</title>
 </head>
 <body>  
@@ -76,15 +77,18 @@
                 </div>
             </div>  
     </header>
-    <section class="cart-container">
+    <section class="cart-container2">
         <cfif IsDefined("session.cartid")>   
             <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                 <cfinvokeargument name="productid" value="0">
             </cfinvoke>  
+            <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
+            <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
         </cfif>
-        <cfif IsDefined("session.cartid")>
-                <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
-                <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
+        <cfset local.address="">
+        <cfif IsDefined("session.userid")>
+            <cfinvoke component="Components/order" method="fun_checkaddress" returnvariable="address"></cfinvoke>  
+            <cfset local.address="#address.address#">      
         </cfif>
         <cfif cartitem1.recordCount eq 1>
             <cfset item="Item">
@@ -93,14 +97,14 @@
         </cfif>
         <cfoutput>
             <div class="topdiv">        
-                <div class="flipkartheading">        
-                    <div>Flipkart(#cartitem1.recordCount#)</div>
+                <div class="deliveryaddresshead" >        
+                    <div id="deliveryadd">DELIVERY ADDRESS<i class="fas fa-chevron-down arrow-icon small-icon "></i></div>
                 </div>      
                 <div class="pricedetails"><br>
                     <span class="pricedetailsspan">PRICE DETAILS</span>
                     <div class="horizontal-line"></div>
                     <div class="pricerow">
-                        <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#price#</div>
+                        <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#Chr(8377)##price#</div>
                     </div>
                     <div class="pricerow">
                          <div class="priceleft">Discount</div><div class="priceright">0.00</div>
@@ -110,39 +114,47 @@
                     </div>
                     <div class="horizontal-line-dashed"></div>
                     <div class="pricerow">
-                          <span class="totalamt">Total  Amount</span><div class="priceright"><b>#price#</b></div>
+                          <span class="totalamt">Total  Amount</span><div class="priceright"><b>#Chr(8377)##price#</b></div>
                     </div>
-                    
                 </div>
-            </div>                  
-                        
-            <div class="testdiv">
-                <cfloop query="orderdetails">
-                    <div class="addressdiv">
-                        <div class="orderimg">
-                            <img src="#orderdetails.productimg#">                                    
-                        </div>
-                        <div class="orderpdtname">
-                            <a>#orderdetails.productname#</a><br>
-                            <p class="productprize">#orderdetails.productprize#</p>
-                        </div><br>
-                        <div class="addrembtndiv">
-                            <span class="addrmvbtnspan">
-                                    <button class="minus-button">-</button>
-                                    <input class="quantity-input"  type="text">
-                                    <button class="plus-button">+</button>
-                            </span>
-                        </div>
-                        <div class="removelink" id="#orderdetails.id#">REMOVE</div>
-                    </div>
-                </cfloop>
+            </div>      
+            <div class="addressdiv" id="addressdiv">
+                <textarea id="textarea" rows="4" cols="50">#local.address#</textarea>
+                <button class="saveanddeliverbtn">SAVE AND DELIVER HERE</button>
             </div>
-            <div class="placeorderdiv">        
-                <button class="placeorderbtn">PLACE ORDER</button>
-            </div>
-        </cfoutput>
+            <div class="ordersummaryhead">        
+                <div>ORDER SUMMARY</div>
+                <div class="ordersummary">
+                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/grocery-cart-checkout_b98b01.svg">
+                    <span class="basketitemhead">Basket (#cartitem1.recordCount# #item#)</span><br><br>
+                    <span class="basketitemrupee">#Chr(8377)##price#</span>   <br><br>
+                    <span class="basketitemrembasket">REMOVE BASKET</span>                  
+                </div>
+            </div>             
+        </cfoutput>        
     </section>
-    
+    <div class="lastdiv">
+        <span>
+            <span class="policies-title footertitle">
+                Policies:
+            </span>
+            <a class="_7wFl2u" href="/returnpolicy" target="_blank" rel="noopener noreferrer">
+                Returns Policy
+            </a>
+            <a class="_7wFl2u" href="/pages/terms" target="_blank" rel="noopener noreferrer">
+                Terms of use
+            </a>
+            <a class="_7wFl2u" href="/pages/paymentsecurity" target="_blank" rel="noopener noreferrer">
+                Security
+            </a>
+            <a class="_7wFl2u" href="/pages/privacypolicy" target="_blank" rel="noopener noreferrer">
+                Privacy
+            </a>
+            <a class="_7wFl2u" href="https://seller.flipkart.com/fiv" target="_blank" rel="noopener noreferrer">
+                Infringement
+            </a>
+        </span>
+    </div>
     <script src="js/productlist.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>   

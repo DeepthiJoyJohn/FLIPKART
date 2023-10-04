@@ -13,6 +13,7 @@
   <title>Product Listing Page</title>
 </head>
 <body>  
+
     <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -70,23 +71,26 @@
                                 <i class="fa fa-sign-out fa-lg iconcolor"></i>  
                                 <p>Log Out</p>                               
                             </a>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </div>
             </div>  
     </header>
-    <cfif IsDefined("session.cartid")>   
+     
+    <cfif IsDefined("session.cartid")>
             <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                 <cfinvokeargument name="productid" value="0">
-            </cfinvoke>  
+            </cfinvoke> 
     </cfif>
+   
     <cfif cartitem1.recordCount gt 0>
-        <section class="cart-container">
-            
+        <section class="cart-container">            
             <cfif IsDefined("session.cartid")>
-                    <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
-                    <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
+                    <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>                     
+                      
+                    <cfif IsDefined("session.userid")>                   
+                        <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
+                    </cfif>                   
             </cfif>
             <cfif cartitem1.recordCount eq 1>
                 <cfset item="Item">
@@ -97,7 +101,8 @@
                 <div class="topdiv">        
                     <div class="flipkartheading">        
                         <div>Flipkart(#cartitem1.recordCount#)</div>
-                    </div>      
+                    </div>   
+                          
                     <div class="pricedetails"><br>
                         <span class="pricedetailsspan">PRICE DETAILS</span>
                         <div class="horizontal-line"></div>
@@ -117,7 +122,7 @@
                         
                     </div>
                 </div>                  
-                            
+                       
                 <div class="testdiv">
                     <cfloop query="orderdetails">
                         <cfset quantityval="0">  
@@ -157,6 +162,7 @@
                     <button class="placeorderbtn">PLACE ORDER</button>
                 </div>
             </cfoutput>
+            
         </section>
     <cfelse>
         <div class="cartempty">

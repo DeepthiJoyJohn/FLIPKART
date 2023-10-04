@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <title>Product Listing Page</title>
 </head>
-<body>  
+<body>      
     <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -77,14 +77,16 @@
                 </div>
             </div>  
     </header>
+    
     <section class="cart-container2">
         <cfif IsDefined("session.cartid")>   
             <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                 <cfinvokeargument name="productid" value="0">
-            </cfinvoke>  
+            </cfinvoke> 
+                 
             <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
             <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
-        </cfif>
+        </cfif>         
         <cfset local.address="">
         <cfif IsDefined("session.userid")>
             <cfinvoke component="Components/order" method="fun_checkaddress" returnvariable="address"></cfinvoke>  
@@ -95,11 +97,13 @@
         <cfelse>
              <cfset item="Items">
         </cfif>
+        
         <cfoutput>
             <div class="topdiv">        
                 <div class="deliveryaddresshead" >        
                     <div id="deliveryadd">DELIVERY ADDRESS<i class="fas fa-chevron-down arrow-icon small-icon "></i></div>
-                </div>      
+                </div>  
+                    
                 <div class="pricedetails"><br>
                     <span class="pricedetailsspan">PRICE DETAILS</span>
                     <div class="horizontal-line"></div>
@@ -117,7 +121,8 @@
                           <span class="totalamt">Total  Amount</span><div class="priceright"><b>#Chr(8377)##price#</b></div>
                     </div>
                 </div>
-            </div>      
+            </div> 
+             
             <div class="addressdiv" id="addressdiv">
                 <textarea id="textarea" rows="4" cols="50">#local.address#</textarea>
                 <button class="saveanddeliverbtn">SAVE AND DELIVER HERE</button>
@@ -133,6 +138,7 @@
             </div>             
         </cfoutput>        
     </section>
+   
     <div class="lastdiv">
         <span>
             <span class="policies-title footertitle">

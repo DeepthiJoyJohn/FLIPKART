@@ -1,7 +1,7 @@
 
 <cfcomponent>
 
-    <cffunction name="fun_orderlist" access="public">              
+    <cffunction name="fun_orderlist_" access="public">              
         <cfquery name="qry_getorderlist" datasource="#application.datasoursename#">
             SELECT *
             FROM productclassitem AS A
@@ -12,6 +12,10 @@
         </cfquery>
         <cfreturn qry_getorderlist>
     </cffunction>
+    <cffunction name="fun_orderlist" access="public">
+        <cfreturn "1">
+    </cffunction>
+
 
     <cffunction name="fun_cartitemdelete" access="remote">   
         <cfargument name="productid">       
@@ -53,6 +57,37 @@
                     WHERE userid=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
                 </cfquery>
             </cfif>
+    </cffunction>
+
+    <cfunction name="fun_getorderid" access="public">
+        <cfquery name="qry_getorderid" access="public">
+            SELECT *
+            FROM ordertable
+            WHERE userid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.userid#">
+        </cfquery>
+        <cfreturn qry_getorderid>
+    </cfunction>
+
+    <cffunction name="fun_placeorder" access="remote"> 
+        <cfquery name="qry_insertordertable" datasource="#application.datasoursename#">
+            INSERT 
+            INTO ordertable (userid, orderdate,orderstatus)
+            VALUES (<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">,
+                    <cfqueryparam value="#now()#" cfsqltype="timestamp">,
+                    <cfqueryparam value="Pending" cfsqltype="cf_sql_varchar">)
+        </cfquery>  
+        <cfset var cartdetails=fun_orderlist()>
+        <cfset var orderid=fun_getorderid()>
+        <cfloop query="cartdetails">
+            <cfquery name="qry_insertorderitemtable" datasource="#application.datasoursename#">
+                INSERT 
+                INTO orderitemtable (orderid,productid,quantity,unitprize)
+                VALUES (<cfqueryparam value="#orderid.orderid#" cfsqltype="cf_sql_integer">,
+                        <cfqueryparam value="#qry_insertorderitemtable.productid#" cfsqltype="cf_sql_integer">,
+                        <cfqueryparam value="#qry_insertorderitemtable.quantity#" cfsqltype="cf_sql_integer">,
+                        <cfqueryparam value="#qry_insertorderitemtable.productprize#" cfsqltype="cf_sql_decimal">)
+            </cfquery>    
+        </cfloop>                    
     </cffunction>
 
 </cfcomponent>

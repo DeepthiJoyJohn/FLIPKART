@@ -16,7 +16,17 @@ $(".removelink").click(function() {
 });
 
 $(".placeorderbtn").click(function() {  
-  window.location.href = "placeorderpage.cfm";
+  $.ajax({
+    type: "POST",
+    url: "Components/order.cfc?method=fun_placeorder",  
+    success: function(response) {            
+      alert(response);
+      window.location.href = "placeorderpage.cfm";
+    },
+    error: function(xhr, textStatus, errorThrown) {              
+        //window.location.reload();
+    }
+  });  
 });
 
 $(".saveanddeliverbtn").click(function() { 

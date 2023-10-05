@@ -101,8 +101,7 @@
                 <div class="topdiv">        
                     <div class="flipkartheading">        
                         <div>Flipkart(#cartitem1.recordCount#)</div>
-                    </div>   
-                          
+                    </div> 
                     <div class="pricedetails"><br>
                         <span class="pricedetailsspan">PRICE DETAILS</span>
                         <div class="horizontal-line"></div>

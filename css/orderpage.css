@@ -174,8 +174,8 @@ max-height: 100%;
 .testdiv{
   position: fixed;
   top: 140px;
-  left: 1px;
-  width: 800px; /* Adjust the width as needed */
+  left: 100px;
+  width: 700px; /* Adjust the width as needed */
   height: 400px; /* Adjust the height as needed */
   overflow: auto;
   
@@ -246,14 +246,11 @@ max-height: 100%;
   padding-left:10px;
 }
 .addressdiv{
-  position: fixed;
-  top: 115px;
-  left: 1px;
   width: 700px; /* Adjust the width as needed */
-  height: 120px; /* Adjust the height as needed */
+  height: 140px; /* Adjust the height as needed */
   overflow: auto;
   background-color: #f0f5ff;
-   
+  margin-left:2px;
 }
 textarea {
   width:600px;

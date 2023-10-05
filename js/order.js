@@ -15,7 +15,7 @@ $(".removelink").click(function() {
       window.location.reload();      
 });
 
-$(".placeorderbtn").click(function() {  
+$(".placeorderbtn").click(function() { 
   $.ajax({
     type: "POST",
     url: "Components/order.cfc?method=fun_placeorder",  

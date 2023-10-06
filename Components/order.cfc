@@ -12,6 +12,18 @@
         </cfquery>
         <cfreturn qry_getorderlist>
     </cffunction>
+
+    <cffunction name="fun_orderlistplaceorder" access="public">              
+        <cfquery name="qry_getorderlistplaceorder" datasource="#application.datasoursename#">
+            SELECT *
+            FROM productclassitem AS A
+            INNER JOIN orderitemtable AS B ON A.id = B.productid
+            INNER JOIN ordertable AS C ON B.orderid = C.orderid 
+            WHERE C.userid=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
+            AND B.quantity <> "0"
+        </cfquery>
+        <cfreturn qry_getorderlistplaceorder>
+    </cffunction>
     
 
 
@@ -63,24 +75,46 @@
             FROM ordertable
             WHERE userid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.userid#">
         </cfquery>
-        <cfreturn qry_getorderid.orderid[1]>
+        <cfif qry_getorderid.recordCount gt 0>
+            <cfreturn qry_getorderid.orderid[1]>
+        <cfelse>
+            <cfreturn 0> 
+        </cfif>        
+    </cffunction>
+
+    <cffunction name="fun_deleteorderitems" access="remote">
+        <cfargument name="productid">
+        <cfquery name="qry_deleteorderitems" datasource="#application.datasoursename#">
+            DELETE 
+            FROM orderitemtable
+            WHERE orderid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.orderid#">
+            <cfif arguments.productid neq 0>
+                AND productid=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.productid#">
+            </cfif>
+        </cfquery>
     </cffunction>
 
     <cffunction name="fun_placeorder" access="remote"> 
-        <cfquery name="qry_insertordertable" datasource="#application.datasoursename#">
-            INSERT 
-            INTO ordertable (userid, orderdate,orderstatus)
-            VALUES (<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">,
-                    <cfqueryparam value="#now()#" cfsqltype="timestamp">,
-                    <cfqueryparam value="Pending" cfsqltype="cf_sql_varchar">)
-        </cfquery>  
-        <cfset var cartdetails=fun_orderlist()>
-        <cfset var orderid1=fun_getorderid()>
-        <cfloop query="cartdetails">
+    <cfset  local.orderid1=fun_getorderid()>  
+        <cfif local.orderid1 eq 0>      
+            <cfquery name="qry_insertordertable" datasource="#application.datasoursename#">
+                INSERT 
+                INTO ordertable (userid, orderdate,orderstatus)
+                VALUES (<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">,
+                        <cfqueryparam value="#now()#" cfsqltype="timestamp">,
+                        <cfqueryparam value="Pending" cfsqltype="cf_sql_varchar">)
+            </cfquery> 
+            <cfset session.orderid=fun_getorderid()>
+        <cfelse>
+            <cfset session.orderid=fun_getorderid()>
+        </cfif>        
+        <cfset var cartdetails=fun_orderlist()>    
+        <cfset fun_deleteorderitems(0)>   
+        <cfloop query="cartdetails">            
             <cfquery name="qry_insertorderitemtable" datasource="#application.datasoursename#">
                 INSERT 
                 INTO orderitemtable (orderid,productid,quantity,unitprize)
-                VALUES (<cfqueryparam value="#orderid1#" cfsqltype="cf_sql_integer">,
+                VALUES (<cfqueryparam value="#session.orderid#" cfsqltype="cf_sql_integer">,
                         <cfqueryparam value="#cartdetails.productid#" cfsqltype="cf_sql_integer">,
                         <cfqueryparam value="#cartdetails.quantity#" cfsqltype="cf_sql_integer">,
                         <cfqueryparam value="#cartdetails.productprize#" cfsqltype="cf_sql_decimal">)
@@ -88,4 +122,20 @@
         </cfloop>                    
     </cffunction>
 
+    <cffunction name="fun_checkpayment" access="remote">
+        <cfargument name="cardno">
+        <cfargument name="month">
+        <cfargument name="year">
+        <cfargument name="cvv">
+        <cfquery name="qry_checkpayment" datasource="#application.datasoursename#">
+            SELECT * 
+            FROM paymenttable
+            WHERE userid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.userid#">
+            AND cardno=<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.cardno#">
+            AND cvv=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.cvv#">
+            AND month=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.month#">
+            AND year=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.year#">
+        </cfquery>
+        <cfreturn qry_checkpayment.recordCount>
+    </cffunction>
 </cfcomponent>

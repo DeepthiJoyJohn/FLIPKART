@@ -57,7 +57,6 @@ footer {
   align-items: center;
 }
 
-
 /* Styling for the minus button */
 .minus-button {
   background-color: #f0f0f0;
@@ -65,6 +64,15 @@ footer {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+.minus-button-order {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
 
 /* Styling for the plus button */
 .plus-button {
@@ -74,8 +82,22 @@ footer {
   cursor: pointer;
 }
 
+.plus-button-order {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 /* Styling for the quantity input */
 .quantity-input {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  margin: 0 10px;
+}
+.quantity-input-order {
   border: 1px solid #ccc;
   padding: 5px;
   text-align: center;
@@ -103,6 +125,18 @@ footer {
   width:180px;
   margin-bottom:20px;
   display: flex;
+}
+.gotocart {
+  background-color:  #2874f0;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px 10px;
+  cursor: pointer;
+  font-weight: bold;  
+  width:180px;
+  margin-top:300px;  
+  margin-left:565px;
+
 }
 
 /* Hover effect for buttons */

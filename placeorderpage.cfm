@@ -8,12 +8,17 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/productlisting.css"> 
   <link rel="stylesheet" href="css/orderpage.css">   
+   <script src="js/cart.js"></script> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <title>Product Listing Page</title>
 </head>
-<body>      
+<body>    
+    <cfinvoke component="Components/productlist" method="fun_checkorderitem" returnvariable="orderitemchk">
+        <cfinvokeargument name="productid" value="0">
+    </cfinvoke>
+                  
     <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -77,67 +82,114 @@
                 </div>
             </div>  
     </header>
-    
-    <section class="cart-container2">
-        <cfif IsDefined("session.cartid")>   
-            <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
-                <cfinvokeargument name="productid" value="0">
-            </cfinvoke> 
-                 
-            <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
-            <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
-        </cfif>         
-        <cfset local.address="">
-        <cfif IsDefined("session.userid")>
-            <cfinvoke component="Components/order" method="fun_checkaddress" returnvariable="address"></cfinvoke>  
-            <cfset local.address="#address.address#">      
-        </cfif>
-        <cfif cartitem1.recordCount eq 1>
-            <cfset item="Item">
-        <cfelse>
-             <cfset item="Items">
-        </cfif>
-        
-        <cfoutput>
-            <div class="topdiv">        
-                <div class="deliveryaddresshead" >        
-                    <div id="deliveryadd">DELIVERY ADDRESS<i class="fas fa-chevron-down arrow-icon small-icon "></i></div>
-                </div>  
+    <cfif orderitemchk.recordCount neq 0>
+        <section class="cart-container2">
+            <cfif IsDefined("session.cartid")>   
+                <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
+                    <cfinvokeargument name="productid" value="0">
+                </cfinvoke> 
                     
-                <div class="pricedetails"><br>
-                    <span class="pricedetailsspan">PRICE DETAILS</span>
-                    <div class="horizontal-line"></div>
-                    <div class="pricerow">
-                        <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#Chr(8377)##price#</div>
+                <cfinvoke component="Components/productlist" method="fun_gettotalorderprice" returnvariable="price"></cfinvoke>
+                <cfinvoke component="Components/order" method="fun_orderlistplaceorder" returnvariable="orderdetails"></cfinvoke> 
+            </cfif>         
+            <cfset local.address="">
+            <cfif IsDefined("session.userid")>
+                <cfinvoke component="Components/order" method="fun_checkaddress" returnvariable="address"></cfinvoke>  
+                <cfset local.address="#address.address#">      
+            </cfif>
+            <cfif cartitem1.recordCount eq 1>
+                <cfset item="Item">
+            <cfelse>
+                <cfset item="Items">
+            </cfif>
+            
+            <cfoutput>
+                <div class="topdiv">        
+                    <div class="deliveryaddresshead" >        
+                        <div id="deliveryadd">DELIVERY ADDRESS<i class="fas fa-chevron-down arrow-icon small-icon "></i></div>
+                    </div>  
+                        
+                    <div class="pricedetails"><br>
+                        <span class="pricedetailsspan">PRICE DETAILS</span>
+                        <div class="horizontal-line"></div>
+                        <div class="pricerow">
+                            <div class="priceleft">Price(#cartitem1.recordCount# #item#)</div><div class="priceright">#Chr(8377)##price#</div>
+                        </div>
+                        <div class="pricerow">
+                            <div class="priceleft">Discount</div><div class="priceright">0.00</div>
+                        </div>
+                        <div class="pricerow">
+                            <div class="priceleft">Delivery Charges</div><div class="priceright">0.00</div>
+                        </div>
+                        <div class="horizontal-line-dashed"></div>
+                        <div class="pricerow">
+                            <span class="totalamt">Total  Amount</span><div class="priceright"><b>#Chr(8377)##price#</b></div>
+                        </div>
+                        <button class="continue" id="continue">CONTINUE</button>
+                        <div class="paydetails" id="paydetails">
+                            <span class="cardspan">Credit/Debit/ATM Card</span>
+                            <input type="textbox" class="cardnotext" id="cardnotext" maxlength="16"><br><br>                            
+                            <span class="cardspan">Valid Through</span>
+                            <input type="textbox" class="validthroughmonth" id="validthroughmonth" maxlength="2" Placeholder="mm">
+                            <input type="textbox" Placeholder="yyyy" class="validthroughmonth" id="validthroughyear" maxlength="4"><br><br>
+                            <span class="cardspan">CVV</span>
+                            <input type="textbox" class="cvv" maxlength="3" id="cvvtext"><button class="pay" id="pay" onclick="payment()">PAY</button><br>
+                            <span class="errortext" id="errortext"></span>
+                        </div>
                     </div>
-                    <div class="pricerow">
-                         <div class="priceleft">Discount</div><div class="priceright">0.00</div>
-                    </div>
-                    <div class="pricerow">
-                          <div class="priceleft">Delivery Charges</div><div class="priceright">0.00</div>
-                    </div>
-                    <div class="horizontal-line-dashed"></div>
-                    <div class="pricerow">
-                          <span class="totalamt">Total  Amount</span><div class="priceright"><b>#Chr(8377)##price#</b></div>
-                    </div>
+                    
+                     
+                </div> 
+                
+                <div class="addressdivplaceorder" id="addressdivplaceorder">
+                    <textarea id="textarea" rows="4" cols="50">#local.address#</textarea>
+                    <button class="saveanddeliverbtn">SAVE AND DELIVER HERE</button>
                 </div>
-            </div> 
-             
-            <div class="addressdiv" id="addressdiv">
-                <textarea id="textarea" rows="4" cols="50">#local.address#</textarea>
-                <button class="saveanddeliverbtn">SAVE AND DELIVER HERE</button>
-            </div>
-            <div class="ordersummaryhead">        
-                <div>ORDER SUMMARY</div>
-                <div class="ordersummary">
-                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/grocery-cart-checkout_b98b01.svg">
-                    <span class="basketitemhead">Basket (#cartitem1.recordCount# #item#)</span><br><br>
-                    <span class="basketitemrupee">#Chr(8377)##price#</span>   <br><br>
-                    <span class="basketitemrembasket">REMOVE BASKET</span>                  
-                </div>
-            </div>             
-        </cfoutput>        
-    </section>
+                <div class="ordersummaryhead">        
+                    <div>ORDER SUMMARY</div>                
+                </div> 
+                <div class="testdivplaceorder">
+                        <cfloop query="orderdetails">
+                            <cfset quantityval="0">  
+                            <cfset disabled="">           
+                            <cfif IsDefined("session.orderid")>
+                                <cfinvoke component="Components/productlist" method="fun_checkorderitem" returnvariable="orderitem">
+                                    <cfinvokeargument name="productid" value="#orderdetails.id#">
+                                </cfinvoke>
+                                <cfif orderitem.recordCount eq 0>
+                                <cflocation url="currentorderpage.cfm">          
+                                </cfif>                
+                                <cfif orderitem.quantity neq 0>
+                                    <cfset quantityval="#orderitem.quantity#">                                            
+                                </cfif>  
+                                <cfif orderitem.quantity eq 1>
+                                    <cfset quantityval="#orderitem.quantity#">  
+                                    <cfset disabled="disabled">          
+                                </cfif>  
+                            
+                            </cfif> 
+                            <div class="addressdiv">
+                                <div class="orderimg">
+                                    <img src="#orderdetails.productimg#">                                    
+                                </div>
+                                <div class="orderpdtname">
+                                    <a>#orderdetails.productname#</a><br>
+                                    <p class="productprize">#Chr(8377)##orderdetails.productprize#</p>
+                                </div><br>
+                                <div class="productplaceorder">
+                                    <span class="addrmvbtnspan">
+                                            <button class="minus-button-order" #disabled# id="minus-button-order"  value="#orderdetails.productstock#">-</button>
+                                            <input class="quantity-input-order"  id="#orderdetails.id#" type="text" value="#quantityval#">
+                                            <button class="plus-button-order" value="#orderdetails.productstock#">+</button>
+                                    </span>
+                                </div>
+                                <div class="removelinkorder" id="#orderdetails.id#">REMOVE</div>
+                            </div>
+                        </cfloop>
+                    </div>            
+            </cfoutput>        
+        </section>
+    
    
     <div class="lastdiv">
         <span>
@@ -161,6 +213,13 @@
             </a>
         </span>
     </div>
+    <cfelse>
+        <div class="cartempty">
+            <span class="emptycartspan"> YOUR ORDER IS EMPTY!!!!</span>
+            <span class="emptycartimg"><img class="imgemp" src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"></span>
+            <button class="gotocart" type="button" onclick="redirectToAnotherPage()"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Go To Cart </button> <br><br>  
+        </div>
+    </cfif>
     <script src="js/productlist.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>   

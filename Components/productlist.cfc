@@ -46,6 +46,22 @@
         <cfreturn qry_chkcartitemQuery>
     </cffunction>
 
+     <cffunction name="fun_checkorderitem" access="public" returntype="query"> 
+        <cfargument name="productid">              
+        <cfquery name="qry_chkorderitemQuery" datasource="#application.datasoursename#">
+            SELECT * 
+            FROM orderitemtable 
+            WHERE orderid=<cfqueryparam value="#session.orderid#" cfsqltype="cf_sql_integer">
+            <cfif arguments.productid neq "0">
+                AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="cf_sql_integer">
+            <cfelse>
+                AND quantity <> "0"
+            </cfif>                        
+        </cfquery>
+        <cfreturn qry_chkorderitemQuery>
+    </cffunction>
+
+
     <cffunction name="fun_insertcartitem" access="public" returntype="query">   
         <cfargument name="cartid"> 
         <cfargument name="productid"> 
@@ -101,7 +117,18 @@
             WHERE cartid=<cfqueryparam value="#session.cartid#" cfsqltype="CF_SQL_INTEGER"> 
             AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="CF_SQL_INTEGER">            
         </cfquery>
-    </cffunction>  
+    </cffunction> 
+
+    <cffunction name="fun_orderupdate" access="remote">
+        <cfargument name="productid"> 
+        <cfargument name="quantity">        
+        <cfquery name="qry_orderupdate" datasource="#application.datasoursename#">
+            UPDATE orderitemtable
+            SET quantity=<cfqueryparam value="#arguments.quantity#" cfsqltype="CF_SQL_INTEGER">            
+            WHERE orderid=<cfqueryparam value="#session.orderid#" cfsqltype="CF_SQL_INTEGER"> 
+            AND productid=<cfqueryparam value="#arguments.productid#" cfsqltype="CF_SQL_INTEGER">            
+        </cfquery>
+    </cffunction> 
 
     <cffunction name="fun_gettotalcartprice" access="public">             
         <cfquery name="local.qry_gettotalcartprice" datasource="#application.datasoursename#">
@@ -113,6 +140,18 @@
             cartid=<cfqueryparam value="#session.cartid#" cfsqltype="CF_SQL_INTEGER">          
         </cfquery>
         <cfreturn local.qry_gettotalcartprice.prize>
+    </cffunction>  
+
+    <cffunction name="fun_gettotalorderprice" access="public">             
+        <cfquery name="qry_gettotalorderprice" datasource="#application.datasoursename#">
+            SELECT SUM((orderitemtable.quantity*productclassitem.productprize)) AS prize 
+            FROM orderitemtable 
+            INNER JOIN 
+            productclassitem ON (productclassitem.id=orderitemtable.productid)
+            WHERE
+            orderid=<cfqueryparam value="#session.orderid#" cfsqltype="CF_SQL_INTEGER">          
+        </cfquery>
+        <cfreturn qry_gettotalorderprice.prize>
     </cffunction>  
 
 </cfcomponent>

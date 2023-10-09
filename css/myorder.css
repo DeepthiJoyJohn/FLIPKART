@@ -1,0 +1,35 @@
+.myorderhead{
+  background-color:#2874f0;
+  width: 700px;
+  height:40px;
+  margin-top: 20px;
+  margin-left: 100px;  
+  margin-bottom: 10px;  
+  text-align:center;
+  color:#ffffff;
+  font-weight: bold;
+  padding-top:10px; 
+}
+.myorderhead div{
+  float: left;
+  margin-left:10px;
+}
+.orderdetails{
+  position: absolute;
+  top: 115px;
+  left: 100px;
+  width: 900px; /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
+  overflow-y: scroll;
+}
+.orderdetailspdt{
+  width: 900px; /* Adjust the width as needed */
+  height: 140px; /* Adjust the height as needed */
+  overflow: auto;
+  background-color: #f0f5ff;
+  
+}
+.delivery{
+  display:flex;
+  color: black;
+}

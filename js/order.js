@@ -87,7 +87,7 @@ document.getElementById("validthroughyear").addEventListener("input", function (
   var numericInput = input.replace(/[^0-9]/g, ''); // Remove non-numeric characters
   this.value = numericInput;
 });
-document.getElementById("cvv").addEventListener("input", function () {
+document.getElementById("cvvtext").addEventListener("input", function () {
   var input = this.value;
   var numericInput = input.replace(/[^0-9]/g, ''); // Remove non-numeric characters
   this.value = numericInput;

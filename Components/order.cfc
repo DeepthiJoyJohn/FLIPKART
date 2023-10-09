@@ -21,6 +21,7 @@
             INNER JOIN ordertable AS C ON B.orderid = C.orderid 
             WHERE C.userid=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
             AND B.quantity <> "0"
+            AND C.orderstatus="Pending"
         </cfquery>
         <cfreturn qry_getorderlistplaceorder>
     </cffunction>
@@ -74,6 +75,7 @@
             SELECT orderid
             FROM ordertable
             WHERE userid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.userid#">
+            AND orderstatus="Pending"
         </cfquery>
         <cfif qry_getorderid.recordCount gt 0>
             <cfreturn qry_getorderid.orderid[1]>
@@ -136,6 +138,41 @@
             AND month=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.month#">
             AND year=<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.year#">
         </cfquery>
-        <cfreturn qry_checkpayment.recordCount>
+        <cfreturn qry_checkpayment.recordCount>       
+    </cffunction>
+
+    <cffunction name="fun_paysuccess" access="remote">
+        <cfquery name="qry_selectorderitems" datasource="#application.datasoursename#">
+            SELECT productid
+            FROM orderitemtable
+            WHERE orderid = <cfqueryparam cfsqltype="cf_sql_integer" value="#session.orderid#">
+        </cfquery> 
+        <cfloop query="qry_selectorderitems" >
+            <cfquery name="qry_deletebyproductcart" datasource="#application.datasoursename#">
+                DELETE 
+                FROM shoppingcartitem
+                WHERE cartid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.cartid#">
+                AND productid=<cfqueryparam cfsqltype="cf_sql_integer" value="#qry_selectorderitems.productid#">
+            </cfquery>
+        </cfloop>
+        <cfquery name="qry_deletecart" datasource="#application.datasoursename#">
+            DELETE 
+            FROM shoppingcart
+            WHERE cartid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.cartid#">                
+        </cfquery>
+        <cfset structDelete(session, "cartid")>
+        <cfquery name="qry_updateorderstatus" datasource="#application.datasoursename#">
+            UPDATE 
+            ordertable
+            SET  orderstatus="Processing"
+            WHERE orderid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.orderid#">                
+        </cfquery>
+        <cfset local.deliverydate = DateFormat(DateAdd("d", 7, Now()),"yyyy/mm/dd")> 
+        <cfquery name="qry_updateorderitems" datasource="#application.datasoursename#">
+            UPDATE 
+            orderitemtable
+            SET  deliverystatus="Outfordelivery",deliverydate=<cfqueryparam cfsqltype="cf_sql_date" value="#local.deliverydate#">
+            WHERE orderid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.orderid#">                
+        </cfquery>
     </cffunction>
 </cfcomponent>

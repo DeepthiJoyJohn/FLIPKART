@@ -10,7 +10,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <!--div for login-->
+        
         <div id="loginPopup" class="popup">
             <div class="popup-content">
                 <div class="left">
@@ -57,7 +57,7 @@
                 <span class="close" onclick="closeLoginPopup()">&times;</span><br>                
             </div>
         </div>
-        <!--End-->
+       
         <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -95,7 +95,7 @@
                                 <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                                 <p>Flipkart Plus Zone</p>
                             </a>
-                            <a href="#">
+                            <a href="myorders.cfm">
                                 <img src="Icon/order.svg" class="menu_nav_icon"/>
                                 <p>My Orders</p>
                             </a>
@@ -147,9 +147,8 @@
                     </div>
                 </div>
             </div>   
-           
             <div class="cart_link" onclick="openPopup()">
-                 <cfif IsDefined("session.cartid")>       
+                 <cfif IsDefined("session.cartid") AND session.cartid NEQ "">       
                     <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                         <cfinvokeargument name="productid" value="0">
                     </cfinvoke>  
@@ -163,6 +162,7 @@
                 <p> Cart</p>                
             </div>         
         </header>
+         
         <main>            
             <div class="featureProducts">
                 <div class="featureProducts_list">                    

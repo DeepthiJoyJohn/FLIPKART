@@ -109,8 +109,9 @@
                     </div>
                 </div>
             </div> 
+            
             <div class="cart_link" onclick="openPopup()">     
-                <cfif IsDefined("session.cartid")>       
+                <cfif IsDefined("session.cartid") AND (session.cartid NEQ "")>       
                     <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                         <cfinvokeargument name="productid" value="0">
                     </cfinvoke>  
@@ -128,17 +129,19 @@
     <main class="product-list">
         <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
             <cfinvokeargument name="productclassid" value="1">
-        </cfinvoke>              
+        </cfinvoke> 
+                 
         <cfoutput query="result">  
-            <cfset quantityval="0">             
-            <cfif IsDefined("session.cartid")>
+            <cfset quantityval="0"> 
+            <cfif IsDefined("session.cartid") AND session.cartid NEQ "">
                 <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem">
                     <cfinvokeargument name="productid" value="#result.id#">
-                </cfinvoke>                
+                </cfinvoke>      
                 <cfif cartitem.quantity neq 0>
                     <cfset quantityval="#cartitem.quantity#">            
                 </cfif>  
             </cfif> 
+
             <div class="product-card">
                 <img src="Images/items/homeandkitchen.png" alt="Product 1">
                 <h2>#result.productname#</h2>
@@ -158,8 +161,8 @@
             </div>        
         </cfoutput>       
     </main>
-   
-    <cfif IsDefined("session.cartid")>
+    
+    <cfif IsDefined("session.cartid") AND (session.cartid NEQ "")>
         <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>
         <button class="basketbtn" type="button"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Basket &#x20B9;<cfoutput>#price#</cfoutput></button> <br><br>  
     </cfif>

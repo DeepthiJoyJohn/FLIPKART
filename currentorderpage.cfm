@@ -13,7 +13,6 @@
   <title>Product Listing Page</title>
 </head>
 <body>  
-
     <header class="headerclass">
             <div class="logoContainer">
                 <div class="logo">
@@ -75,23 +74,25 @@
                     </div>
                 </div>
             </div>  
-    </header>
-     
-    <cfif IsDefined("session.cartid")>
+    </header>    
+    
+    <cfif IsDefined("session.cartid") AND (session.cartid NEQ "")>
             <cfinvoke component="Components/productlist" method="fun_checkcartitem" returnvariable="cartitem1"> 
                 <cfinvokeargument name="productid" value="0">
             </cfinvoke> 
     </cfif>
    
-    <cfif cartitem1.recordCount gt 0>
+    <cfif IsDefined("cartitem1.recordCount") AND cartitem1.recordCount gt 0>
         <section class="cart-container">            
-            <cfif IsDefined("session.cartid")>
+            <cfif IsDefined("session.cartid") AND (session.cartid NEQ "")>
+                    
                     <cfinvoke component="Components/productlist" method="fun_gettotalcartprice" returnvariable="price"></cfinvoke>                     
-                      
+                         
                     <cfif IsDefined("session.userid")>                   
                         <cfinvoke component="Components/order" method="fun_orderlist" returnvariable="orderdetails"></cfinvoke> 
                     </cfif>                   
             </cfif>
+           
             <cfif cartitem1.recordCount eq 1>
                 <cfset item="Item">
             <cfelse>
@@ -160,18 +161,14 @@
                 <div class="placeorderdiv">        
                     <button class="placeorderbtn">PLACE ORDER</button>
                 </div>
-            </cfoutput>
-            
+            </cfoutput>            
         </section>
     <cfelse>
         <div class="cartempty">
             <span class="emptycartspan"> YOUR CART IS EMPTY!!!!</span>
-            <span class="emptycartimg"><img class="imgemp" src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"></span>
-            
+            <span class="emptycartimg"><img class="imgemp" src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"></span>            
         </div>
-    
-    </cfif>
-    
+    </cfif>    
     <script src="js/productlist.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>   

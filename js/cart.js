@@ -6,6 +6,12 @@ function redirectToAnotherPage() {
   
   window.location.href = 'currentorderpage.cfm';
 }
+function redirectToHome() {  
+  window.location.href = 'myaccount.cfm';
+}
+function redirectToOrder() {  
+  window.location.href = 'placeorderpage.cfm';
+}
 function payment(){
   var cardno=document.getElementById("cardnotext");
   var validthroughmonth=document.getElementById("validthroughmonth");
@@ -41,21 +47,42 @@ function payment(){
   }else{
     cvv.style.border = "1px solid black";
   }
+
+  cardno=cardno.value;
+  validthroughmonth=validthroughmonth.value;
+  validthroughyear=validthroughyear.value;
+  cvv=cvv.value;
   if(flag==1){
     document.getElementById("errortext").innerHTML=errortext;
   }else{
+   
     $.ajax({
       type: "POST",
       url: "Components/order.cfc?method=fun_checkpayment",
-      data: { cardno: cardno.value,month:validthroughmonth.value,year:validthroughyear.value,cvv:cvv.value},
-      dataType: "json", 
+      data: { cardno: cardno,month:validthroughmonth,year:validthroughyear,cvv:cvv}, 
       success: function(response) {            
-        alert(response);
+        $('#errortext').html(response);	
+        var html = document.getElementById("errortext").textContent;
+        if(html=="0.0"){
+          window.location.href = "orderfailpage.cfm";
+        }else{
+          $.ajax({
+            type: "POST",
+            url: "Components/order.cfc?method=fun_paysuccess",
+            data: { }, 
+            success: function(response) {            
+              
+            },
+            error: function(xhr, textStatus, errorThrown) {  
+            }
+          });
+          window.location.href = "ordersuccesspage.cfm";
+        }
+        document.getElementById("errortext").textContent="";
       },
       error: function(xhr, textStatus, errorThrown) {              
-          //window.location.reload();
+          
       }
-    });
-  //window.location.reload();      
+    });    
   }
 }

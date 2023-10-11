@@ -133,19 +133,19 @@ a{
     columns: #FIF3F6;
     font-weight: 550;
     text-decoration: none;
-    
 }
 .login_menu{
     position: absolute;
-    top:34px;
+    top:50px;
     height:350px; 
     width:230px;
     background-color: transparent;
     margin-left: -30px;
     transform: translate(-25%);
-    padding-top: 15px;
+    padding-top: 10px;
     display: none;
-    cursor: pointer; 
+    cursor: pointer;
+    
 }
 
 .login_menu::before{
@@ -160,7 +160,9 @@ a{
 }
 .loginBtn_container:hover .login_menu{
     display: block;
+   
 }
+
 .login_menu_list{
     max-width: 100%;
     background-color: white;

@@ -12,5 +12,8 @@ function openPopup(event) {
   // Open the popup window
   window.open(popupURL, "PopupWindow", popupSettings);
 }
+function delaydisplay(){
+  alert("f");
+}
 
 

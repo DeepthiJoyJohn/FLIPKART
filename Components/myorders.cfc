@@ -2,7 +2,7 @@
 <cfcomponent>
     <cffunction name="fun_getmyorders" access="public">              
         <cfquery name="qry_getorders" datasource="#application.datasoursename#">
-            SELECT *
+            SELECT A.*,DATE_FORMAT(deliverydate, '%d-%m-%Y') AS deliverydate
             FROM productclassitem AS A
             INNER JOIN orderitemtable AS B ON A.id = B.productid
             INNER JOIN ordertable AS C ON B.orderid = C.orderid 

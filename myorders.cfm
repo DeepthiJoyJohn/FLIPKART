@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/orderpage.css">  
   <link rel="stylesheet" href="css/myorder.css">   
   <script src="js/cart.js"></script> 
+  <script src="js/login.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -38,7 +39,7 @@
             </div>
         </div>
         <div class="loginBtn_container">                
-            <a id="myaccountbtn" class="myaccount_order">My Account   <i class="fa fa-angle-down"></i></a>
+            <a id="myaccountbtn" class="myaccount_order" href="javascript:delaydisplay()">My Account   <i class="fa fa-angle-down"></i></a>
             <div class="login_menu">
                 <div class="login_menu_list">
                     <div class="login_menu_top" id="login_menu_top_id">
@@ -78,31 +79,51 @@
             </div>
         </div>  
     </header>    
+    
     <section class="cart-container2">
-        <cfif IsDefined("session.cartid")> 
-            <cfinvoke component="Components/myorders" method="fun_getmyorders" returnvariable="orderdetails"></cfinvoke> 
-        </cfif>  
-        <cfoutput>
-            <div class="topdiv">        
-                <div class="myorderhead" >        
-                    <div>ORDER DETAILS</div>
-                </div>             
-            </div> 
-            <div class="orderdetails">
-                <cfloop query="orderdetails">    
-                    <div class="addressdiv">
-                        <div class="orderimg">
-                            <img src="#orderdetails.productimg#">                                    
+        <cfif IsDefined("session.userid")> 
+            <cfinvoke component="Components/myorders" method="fun_getmyorders" returnvariable="orderdetails"></cfinvoke>
+            <cfoutput>
+                <div class="topdiv">        
+                    <div class="myorderhead" >        
+                        <div>ORDER DETAILS</div>
+                    </div>             
+                </div> 
+                <div class="orderdetails">
+                    <cfloop query="orderdetails"> 
+                        <div class="addressdiv1">
+                            <div class="orderimg">
+                                <img src="#orderdetails.productimg#">                                    
+                            </div>                            
+                            <span class="productdetailsmyorder">
+                                <a>#orderdetails.productname#</a>
+                            </span>
+                            <span class="productdetailsmyorder">
+                                #Chr(8377)##orderdetails.productprize#
+                            </span>
+                            <span class="productdetailsmyorder">
+                                <cfset formattedDate = DateFormat(orderdetails.deliverydate, "yyyy-mm-dd")>
+                                <cfset myDate = ParseDateTime(formattedDate)>
+                                <cfif myDate gte Now()>
+                                    Delivery By (#orderdetails.deliverydate#)
+                                <cfelse>
+                                    Delivered on (#orderdetails.deliverydate#)
+                                </cfif>
+                                <button class="print"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>                               
+                            </span>
                         </div>
-                        <div class="orderpdtname">
-                            <a>#orderdetails.productname#</a><br>
-                            <p class="productprize">#Chr(8377)##orderdetails.productprize#</p>
-                            <p class="delivery">#Chr(8377)##orderdetails.productprize#</p>
-                        </div>   
-                    </div>
-                </cfloop>
-            </div>            
-        </cfoutput>        
+                    </cfloop>
+                </div>            
+            </cfoutput> 
+        <cfelse>
+            <div class="cartempty">
+            <span class="emptycartspan"> NO ORDERS TO DISPLAY!!!!</span>
+            <span class="emptycartimg"><img class="imgemp" src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"></span>
+            <button class="gotocart" type="button" onclick="redirectToHome()"><i class="fa solid fa-shopping-cart" aria-hidden="true"></i> &nbsp;Go To Cart </button> <br><br>  
+        </div>     
+        </cfif>  
+        
+           
     </section>
 
    
@@ -133,5 +154,6 @@
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>   
     <script src="js/order.js"></script>        
+          
 </body>
 </html>

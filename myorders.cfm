@@ -38,8 +38,9 @@
                 
             </div>
         </div>
+        
         <div class="loginBtn_container">                
-            <a id="myaccountbtn" class="myaccount_order" href="javascript:delaydisplay()">My Account   <i class="fa fa-angle-down"></i></a>
+            <a id="myaccountbtn" class="myaccount_order" >My Account   <i class="fa fa-angle-down"></i></a>
             <div class="login_menu">
                 <div class="login_menu_list">
                     <div class="login_menu_top" id="login_menu_top_id">
@@ -79,16 +80,17 @@
             </div>
         </div>  
     </header>    
-    
+   
     <section class="cart-container2">
         <cfif IsDefined("session.userid")> 
-            <cfinvoke component="Components/myorders" method="fun_getmyorders" returnvariable="orderdetails"></cfinvoke>
+            <cfinvoke component="Components/myorders" method="fun_getmyorders" returnvariable="orderdetails"></cfinvoke>           
             <cfoutput>
                 <div class="topdiv">        
                     <div class="myorderhead" >        
                         <div>ORDER DETAILS</div>
                     </div>             
                 </div> 
+                 
                 <div class="orderdetails">
                     <cfloop query="orderdetails"> 
                         <div class="addressdiv1">
@@ -101,6 +103,7 @@
                             <span class="productdetailsmyorder">
                                 #Chr(8377)##orderdetails.productprize#
                             </span>
+                            
                             <span class="productdetailsmyorder">
                                 <cfset formattedDate = DateFormat(orderdetails.deliverydate, "yyyy-mm-dd")>
                                 <cfset myDate = ParseDateTime(formattedDate)>
@@ -108,11 +111,13 @@
                                     Delivery By (#orderdetails.deliverydate#)
                                 <cfelse>
                                     Delivered on (#orderdetails.deliverydate#)
-                                </cfif>
-                                <button class="print"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>                               
+                                </cfif>                                
+                                <button class="print"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>
                             </span>
+                            
                         </div>
                     </cfloop>
+                    <cfabort> 
                 </div>            
             </cfoutput> 
         <cfelse>

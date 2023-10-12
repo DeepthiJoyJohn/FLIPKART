@@ -11,4 +11,20 @@
         </cfquery>
         <cfreturn qry_getorders>
     </cffunction>
+
+    <cffunction name="fun_updateuserdata" access="public"> 
+        <cfargument name="firstname">
+        <cfargument name="lastname">
+        <cfargument name="email">
+        <cfargument name="mobileno">             
+        <cfquery name="qry_updateuserdata" datasource="#application.datasoursename#">
+            UPDATE users
+            SET firstname=<cfqueryparam value="#arguments.firstname#" cfsqltype="cf_sql_varchar">,
+            lastname=<cfqueryparam value="#arguments.lastname#" cfsqltype="cf_sql_varchar">,
+            email=<cfqueryparam value="#arguments.email#" cfsqltype="cf_sql_varchar">, 
+            phone=<cfqueryparam value="#arguments.mobileno#" cfsqltype="cf_sql_varchar">
+            WHERE id=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
+        </cfquery>
+        <cfreturn "SUCCSS">
+    </cffunction>
 </cfcomponent>

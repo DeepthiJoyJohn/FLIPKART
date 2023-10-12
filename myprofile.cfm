@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/productlisting.css"> 
   <link rel="stylesheet" href="css/orderpage.css">   
   <link rel="stylesheet" href="css/myprofile.css">   
-   <script src="js/cart.js"></script> 
+  <script src="js/cart.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -91,58 +91,59 @@
                         <span class="myorderstxt"><a href="myorders.cfm">My Orders<i class="fa fa-angle-right floatright sm" aria-hidden="true"></i></a></span>
                     </div>
                 </div> <br> 
-                                      
-                <div class="personalinfo"><br>
-                    <span class="pricedetailsspan">Personal Information</span>
-                    <button class="savebtn" type="button" >Save </button>
-                    <div class="horizontal-line"></div>  
-                    <div class="divrow" >
-                        <div class="divleft"> 
-                            <label for="firstName" class="inputtextboxlabel">First Name</label>   
+                <form id="myprofileform">                      
+                    <div class="personalinfo"><br>                
+                        <span class="pricedetailsspan">Personal Information</span>
+                        <button class="savebtn" onclick="saveprofile()" id="savebtn" type="Submit" >Save </button>
+                        <div class="horizontal-line"></div>  
+                        <div class="divrow" >
+                            <div class="divleft"> 
+                                <label class="inputtextboxlabel">First Name</label>   
+                            </div>
+                            <div class="divright">              
+                                <input type="text" class="inputtexbox" id="firstname"   tabindex="1" value="">                            
+                            </div>
+                            <div class="divleft">
+                                <label  class="inputtextboxlabel">Last Name</label>
+                            </div>
+                            <div class="divright">
+                                <input type="text" class="inputtexbox" id="lastname" tabindex="1" value="">
+                            </div>
                         </div>
-                        <div class="divright">              
-                            <input type="text" class="inputtexbox" name="firstname" required=""  tabindex="1" value="">
+                        <div class="divrow" >
+                            <div class="divleft">
+                                <label  class="inputtextboxlabel">Your Gender</label>
+                            </div>
+                            <div>
+                                <label class="inputtextboxlabel">Male</label>
+                            </div>
+                            <div>
+                                <input type="radio"  name="gender"  id="male">
+                            </div>
+                            <div>
+                                <label class="inputtextboxlabel">Female</label>                            
+                            </div>
+                            <div>
+                                <input type="radio"  name="gender"  id="female">
+                            </div>
                         </div>
-                        <div class="divleft">
-                            <label for="firstName" class="inputtextboxlabel">Last Name</label>
-                        </div>
-                        <div class="divright">
-                            <input type="text" class="inputtexbox" name="lastname" required=""  tabindex="1" value="">
+                        <div class="divrow" >
+                            <div class="divleft">
+                                <label class="inputtextboxlabel">Email</label>  
+                            </div>
+                            <div class="divright">               
+                                <input type="text" class="inputtexbox" id="email" tabindex="1" value="">
+                            </div>
+                            <div class="divleft">
+                                <label class="inputtextboxlabel">Mobile Number</label>
+                            </div>
+                            <div class="divright">
+                                <input type="text" class="inputtexbox" id="mobileno" tabindex="1" value="">
+                            </div>
                         </div>
                     </div>
-                    <div class="divrow" >
-                        <div class="divleft">
-                            <label for="firstName" class="inputtextboxlabel">Your Gender</label>
-                        </div>
-                        <div>
-                            <label for="firstName" class="inputtextboxlabel">Male</label>
-                        </div>
-                        <div>
-                            <input type="radio" class="_3DAmyP" name="gender" readonly="" id="male">
-                        </div>
-                        <div>
-                            <label for="firstName" class="inputtextboxlabel">Female</label>                            
-                        </div>
-                        <div>
-                            <input type="radio" class="_3DAmyP" name="gender" readonly="" id="female">
-                        </div>
-                    </div>
-                    <div class="divrow" >
-                        <div class="divleft">
-                            <label for="firstName" class="inputtextboxlabel">Email</label>  
-                        </div>
-                        <div class="divright">               
-                            <input type="text" class="inputtexbox" name="email" required=""  tabindex="1" value="">
-                        </div>
-                        <div class="divleft">
-                            <label for="firstName" class="inputtextboxlabel">Mobile Number</label>
-                        </div>
-                        <div class="divright">
-                            <input type="text" class="inputtexbox" name="mobileno" required=""  tabindex="1" value="">
-                        </div>
-                    </div>
-                </div>
-            </div>     
+                </div>  
+            </form>   
         </cfoutput>        
     </section>
     <div class="lastdiv">
@@ -169,6 +170,7 @@
     </div>    <script src="js/productlist.js"></script>  
     <script src="js/javascript.js" type="module"></script>   
     <script src="js/scripts.js"></script>   
-    <script src="js/order.js"></script>        
+    <script src="js/order.js"></script>     
+    <script src="js/myprofile.js"></script>    
 </body>
 </html>

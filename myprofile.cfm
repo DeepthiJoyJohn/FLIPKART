@@ -167,10 +167,9 @@
                 Infringement
             </a>
         </span>
-    </div>    <script src="js/productlist.js"></script>  
-    <script src="js/javascript.js" type="module"></script>   
-    <script src="js/scripts.js"></script>   
-    <script src="js/order.js"></script>     
+    </div>   
+    <script src="js/productlist.js"></script> 
+    <script src="js/scripts.js"></script> 
     <script src="js/myprofile.js"></script>    
 </body>
 </html>

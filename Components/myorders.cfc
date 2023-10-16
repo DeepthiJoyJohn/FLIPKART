@@ -18,7 +18,8 @@
     </cffunction>
     <cffunction name="fun_getmyorders" access="public">              
         <cfquery name="qry_getorders" datasource="#application.datasoursename#">
-            SELECT A.*,DATE_FORMAT(deliverydate, '%d-%m-%Y') AS deliverydate
+            SELECT A.*,DATE_FORMAT(deliverydate, '%d-%m-%Y') AS deliverydate,C.orderid as orderid,C.invoiceno as invoiceno,B.quantity as quantity,
+            DATE_FORMAT(orderdate, '%d-%m-%Y') AS orderdate,B.unitprize as unitprize
             FROM productclassitem AS A
             INNER JOIN orderitemtable AS B ON A.id = B.productid
             INNER JOIN ordertable AS C ON B.orderid = C.orderid 
@@ -34,6 +35,5 @@
             WHERE id=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
         </cfquery>
         <cfreturn qry_getuserdetails>
-    </cffunction>
-   
+    </cffunction>   
 </cfcomponent>

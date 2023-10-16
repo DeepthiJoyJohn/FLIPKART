@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/myorder.css">   
   <script src="js/cart.js"></script> 
   <script src="js/login.js"></script>
+  <script src="js/print.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -112,7 +113,7 @@
                                 <cfelse>
                                     Delivered on (#orderdetails.deliverydate#)
                                 </cfif>                                
-                                <button class="print"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>
+                                <button class="print" onclick="redirectPage()"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>
                             </span>
                             
                         </div>

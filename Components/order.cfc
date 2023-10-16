@@ -161,10 +161,11 @@
             WHERE cartid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.cartid#">                
         </cfquery>
         <cfset structDelete(session, "cartid")>
+        <cfset local.invoiceno="INV-#session.orderid#">
         <cfquery name="qry_updateorderstatus" datasource="#application.datasoursename#">
             UPDATE 
             ordertable
-            SET  orderstatus="Processing"
+            SET  orderstatus="Processing",invoiceno=<cfqueryparam cfsqltype="cf_sql_varchar" value="#local.invoiceno#">
             WHERE orderid=<cfqueryparam cfsqltype="cf_sql_integer" value="#session.orderid#">                
         </cfquery>
         <cfset local.deliverydate = DateFormat(DateAdd("d", 7, Now()),"yyyy/mm/dd")> 

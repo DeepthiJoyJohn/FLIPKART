@@ -143,3 +143,7 @@ footer {
 .minus-button:hover, .plus-button:hover, .add-to-cart-button:hover {
   background-color: #0056b3;
 }
+.productlistimg{
+  width:100px;
+  height:100px;
+}

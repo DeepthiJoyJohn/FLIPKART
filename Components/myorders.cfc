@@ -28,6 +28,24 @@
         </cfquery>
         <cfreturn qry_getorders>
     </cffunction>
+    <cffunction name="fun_getmyplacedorders" access="public">
+        <cfargument name="orderid">
+        <cfquery name="qry_getmyplacedorders" datasource="#application.datasoursename#">
+            SELECT A.*,DATE_FORMAT(deliverydate, '%d-%m-%Y') AS deliverydate,C.orderid as orderid,C.invoiceno as invoiceno,B.quantity as quantity,
+            DATE_FORMAT(orderdate, '%d-%m-%Y') AS orderdate,B.unitprize as unitprize,A.id as id
+            FROM productclassitem AS A
+            INNER JOIN orderitemtable AS B ON A.id = B.productid
+            INNER JOIN ordertable AS C ON B.orderid = C.orderid 
+            WHERE C.userid=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
+            AND B.quantity <> "0" 
+            AND B.deliverystatus IS NOT NULL            
+            AND B.deliverydate IS NOT NULL   
+            <cfif arguments.orderid NEQ 0>
+            AND C.orderid=<cfqueryparam value="#arguments.orderid#" cfsqltype="cf_sql_integer">
+            </cfif>     
+        </cfquery>
+        <cfreturn qry_getmyplacedorders>
+    </cffunction>
      <cffunction name="fun_getuserdetails" access="public" returntype="query">
         <cfquery name="qry_getuserdetails" datasource="#application.datasoursename#">
             SELECT * 

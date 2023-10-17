@@ -145,11 +145,24 @@
                 <p> Cart</p>
             </div>         
         </header>
-        <main>            
+        <main>  
+            <cfinvoke component="Components/FeaturedProducts" method="fun_productslistmain" returnvariable="productlistmain">
             <div class="featureProducts">
-                <div class="featureProducts_list">                    
-                </div>
-                
+                <div class="featureProducts_list">
+                    <cfloop query="productlistmain"> 
+                        <cfoutput>
+                       
+                            <div class="featureProducts_item">
+                                <a href="javascript:showLoginPopup()">
+                                    <div class="featureProducts_image">
+                                        <img src="#productlistmain.productclassimg#"/>
+                                    </div>
+                                    <p class="featureProducts_name">#productlistmain.productclassname#</p>
+                                </a>
+                            </div>   
+                        </cfoutput>
+                    </cfloop> 
+                </div>                
             </div>
             <!--Image Slider-->
             <div class="imageSliderContainer">

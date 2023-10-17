@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  $(".add-to-cart-button").click(function() {    
+  $(".add-to-cart-button").click(function() { 
+      
       // Get the value of the button that was clicked      
       var buttonval = $(this).attr("data-product-id");  
       var quantity=1;  

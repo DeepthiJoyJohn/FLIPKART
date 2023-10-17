@@ -28,24 +28,24 @@ function renderrecent(){
 renderrecent()
 
 /*****featured Product */
-let featuredProduct_listEI=document.querySelector(".featureProducts_list")
-let featuredProductHTML=''
-featureProductNav.forEach(el=>{
-	featuredProductHTML +=`
-		<div class="featureProducts_item">
-			<a href="${el.link}">
-				<div class="featureProducts_image">
-					<img src="${el.img}"/>
-				</div>
-				<p class="featureProducts_name">
-					${el.name}
-					${el.subNavigation ?`<i class="fa solid fa-angle-down featureProduct_icon_more"></i>`:""}
-				</p>
-			</a>
-		</div>`
-})
+// let featuredProduct_listEI=document.querySelector(".featureProducts_list")
+// let featuredProductHTML=''
+// featureProductNav.forEach(el=>{
+// 	featuredProductHTML +=`
+// 		<div class="featureProducts_item">
+// 			<a href="${el.link}">
+// 				<div class="featureProducts_image">
+// 					<img src="${el.img}"/>
+// 				</div>
+// 				<p class="featureProducts_name">
+// 					${el.name}
+// 					${el.subNavigation ?`<i class="fa solid fa-angle-down featureProduct_icon_more"></i>`:""}
+// 				</p>
+// 			</a>
+// 		</div>`
+// })
 
-featuredProduct_listEI.innerHTML=featuredProductHTML;
+//featuredProduct_listEI.innerHTML=featuredProductHTML;
 /****Image Slider */
 let imageSliderListEl=document.querySelector(".imageSliderList")
 let imageSliderListHTML=''

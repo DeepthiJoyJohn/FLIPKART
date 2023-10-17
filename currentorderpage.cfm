@@ -42,7 +42,7 @@
                                                       
                         </div>
                         <div class="menu_nav_link">
-                            <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
+                            <a href="myprofile.cfm">
                                 <i class="fa fa-user-circle-o fa-lg iconcolor"></i>
                                 <p>My Profile</p>
                             </a>
@@ -50,7 +50,7 @@
                                 <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                                 <p>Flipkart Plus Zone</p>
                             </a>
-                            <a href="#">
+                            <a href="myorders.cfm">
                                 <img src="Icon/order.svg" class="menu_nav_icon"/>
                                 <p>My Orders</p>
                             </a>

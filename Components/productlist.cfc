@@ -6,7 +6,7 @@
         <cfquery name="getproducts" datasource="#application.datasoursename#">
             SELECT *
             FROM productclassitem
-            WHERE productclassid = <cfqueryparam value="#productclassid#" cfsqltype="cf_sql_integer">
+            WHERE productclassid = <cfqueryparam value="#arguments.productclassid#" cfsqltype="cf_sql_integer">
         </cfquery>
         <cfreturn getproducts>
     </cffunction>

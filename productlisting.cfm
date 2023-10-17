@@ -37,8 +37,8 @@
             </div>
             
             <div class="loginBtn_container">
-                <a href="javascript:showLoginPopup()" id="loginBtn">Login</a>
-                <a id="myaccountbtn" class="myaccount">My Account</a>
+                
+                <a id="myaccountbtn" class="myaccount_order">My Account   <i class="fa fa-angle-down"></i></a>                
                 <div class="login_menu">
                     <div class="login_menu_list">
                         <div class="login_menu_top" id="login_menu_top_id">
@@ -46,7 +46,7 @@
                             <a href="javascript:showSignupPopup()">Sign Up</a>                            
                         </div>
                         <div class="menu_nav_link">
-                            <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
+                            <a href="myprofile.cfm">
                                 <i class="fa fa-user-circle-o fa-lg iconcolor"></i>
                                 <p>My Profile</p>
                             </a>
@@ -54,7 +54,7 @@
                                 <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                                 <p>Flipkart Plus Zone</p>
                             </a>
-                            <a href="#">
+                            <a href="myorders.cfm">
                                 <img src="Icon/order.svg" class="menu_nav_icon"/>
                                 <p>My Orders</p>
                             </a>
@@ -127,9 +127,11 @@
     </header>
    
     <main class="product-list">
-        <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
-            <cfinvokeargument name="productclassid" value="1">
-        </cfinvoke> 
+        <cfoutput>
+            <cfinvoke component="Components/productlist" method="productslist" returnvariable="result">
+                <cfinvokeargument name="productclassid" value="#url.productclassid#">
+            </cfinvoke> 
+        </cfoutput>
                  
         <cfoutput query="result">  
             <cfset quantityval="0"> 
@@ -143,7 +145,7 @@
             </cfif> 
 
             <div class="product-card">
-                <img src="Images/items/homeandkitchen.png" alt="Product 1">
+                <img class="productlistimg" src="#result.productimg#" alt="Product 1">
                 <h2>#result.productname#</h2>
                 <p>#result.productdescription#</p>
                 <span class="price">$#result.productprize#</span>

@@ -48,7 +48,7 @@
                                                     
                     </div>
                     <div class="menu_nav_link">
-                        <a href="https://www.flipkart.com/account/login?ret=%2Faccount%2F%3Frd%3D0%26link%3Dhome_account">
+                        <a href="myprofile.cfm">
                             <i class="fa fa-user-circle-o fa-lg iconcolor"></i>
                             <p>My Profile</p>
                         </a>
@@ -56,7 +56,7 @@
                             <img src="Icon/flipkartzone.svg" class="menu_nav_icon"/>
                             <p>Flipkart Plus Zone</p>
                         </a>
-                        <a href="#">
+                        <a href="myorders.cfm">
                             <img src="Icon/order.svg" class="menu_nav_icon"/>
                             <p>My Orders</p>
                         </a>
@@ -84,41 +84,65 @@
    
     <section class="cart-container2">
         <cfif IsDefined("session.userid")> 
-            <cfinvoke component="Components/myorders" method="fun_getmyorders" returnvariable="orderdetails"></cfinvoke>           
+            <cfinvoke component="Components/myorders" method="fun_getmyplacedorders" returnvariable="orderdetails">
+                <cfinvokeargument name="orderid" value="0">  
+            </cfinvoke>  
+
             <cfoutput>
                 <div class="topdiv">        
                     <div class="myorderhead" >        
                         <div>ORDER DETAILS</div>
                     </div>             
                 </div> 
-                 
+                <cfset local.orderno=""> 
                 <div class="orderdetails">
-                    <cfloop query="orderdetails"> 
+                    <cfset local.slno=0>
+                    <cfloop query="orderdetails">                         
+                        <cfif (local.orderno NEQ #orderdetails.orderid#)>
+                            <cfset local.orderno=#orderdetails.orderid#>
+                            <cfset local.slno=local.slno+1>
+                        <cfelse>
+                            <cfset local.slno=0>
+                        </cfif>
+                         
                         <div class="addressdiv1">
-                            <div class="orderimg">
-                                <img src="#orderdetails.productimg#">                                    
-                            </div>                            
-                            <span class="productdetailsmyorder">
-                                <a>#orderdetails.productname#</a>
-                            </span>
-                            <span class="productdetailsmyorder">
-                                #Chr(8377)##orderdetails.productprize#
-                            </span>
-                            
-                            <span class="productdetailsmyorder">
-                                <cfset formattedDate = DateFormat(orderdetails.deliverydate, "yyyy-mm-dd")>
-                                <cfset myDate = ParseDateTime(formattedDate)>
-                                <cfif myDate gte Now()>
-                                    Delivery By (#orderdetails.deliverydate#)
-                                <cfelse>
-                                    Delivered on (#orderdetails.deliverydate#)
-                                </cfif>                                
-                                <button class="print" onclick="redirectPage()"> <i class="fa fa-print" aria-hidden="true"></i>  Download</button>
-                            </span>
-                            
+                            <table>
+                                <tr>
+                                    <td colspan="4" class="tdclass">
+                                        <cfif local.slno EQ 1>                            
+                                            <button class="print" onclick="redirectPage(#orderdetails.orderid#)"> <i class="fa fa-print" aria-hidden="true"></i>  Download-Order-ID:#orderdetails.orderid#</button>
+                                        </cfif>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td class="tdclass"><img src="#orderdetails.productimg#"></td>
+                                    <td class="tdclass">
+                                        <span class="productdetailsmyorder">
+                                            <a>#orderdetails.productname#</a>
+                                        </span>
+                                    </td>
+                                    <td class="tdclass">
+                                        <span class="productdetailsmyorder">
+                                            #Chr(8377)##orderdetails.productprize#
+                                         </span>
+                                    </td>
+                                    <td class="tdclass">
+                                        <span class="productdetailsmyorder">
+                                            <cfset formattedDate = DateFormat(orderdetails.deliverydate, "yyyy-mm-dd")>
+                                            <cfset myDate = ParseDateTime(formattedDate)>
+                                            <cfif myDate gte Now()>
+                                                Delivery By (#orderdetails.deliverydate#)
+                                            <cfelse>
+                                                Delivered on (#orderdetails.deliverydate#)
+                                            </cfif> 
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </cfloop>
-                    <cfabort> 
+                   
                 </div>            
             </cfoutput> 
         <cfelse>
